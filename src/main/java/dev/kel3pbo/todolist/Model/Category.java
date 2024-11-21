@@ -9,5 +9,7 @@ public class Category {
         this.name = name;
     }
 
-    
+    public String getNama(){
+        return name;
+    }
 }
