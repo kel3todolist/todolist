@@ -2,7 +2,7 @@ package dev.kel3pbo.todolist.Model;
 
 import java.util.Date;
 
-public class Task {
+public class Task implements Notifiable {
     private int id;
     private String title;
     private String description;
@@ -68,4 +68,10 @@ public class Task {
         long diffDays = diff / (24 * 60 * 60 * 1000);
         return diffDays <= 3;
     }
+
+    @Override
+    public String sendNotification() {
+        return "Task " + title + " is near deadline!" + " (" + deadline + ")";
+    }
+
 }
