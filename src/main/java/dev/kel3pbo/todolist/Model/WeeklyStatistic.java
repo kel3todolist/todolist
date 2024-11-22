@@ -11,7 +11,7 @@ package dev.kel3pbo.todolist.Model;
 public class WeeklyStatistic extends Statistik{
      @Override
     public double calculateCompletionRate(){
-        
+        return (double) completedTask / totalTask * 100;
     }
     
     @Override

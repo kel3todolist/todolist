@@ -11,7 +11,7 @@ public class DailyStatistic extends Statistik {
     
     @Override
     public double calculateCompletionRate(){
-        
+        return (double) completedTask / totalTask * 100;
     }
     
     @Override
