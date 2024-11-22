@@ -6,10 +6,26 @@ public class Category {
     private ArrayList<Task> taks;
 
     public Category(String name){
+        setName();
+    }
+
+    public void addTask(Task task){
+
+    }
+
+    public void removeTask(Task task){
+
+    }
+
+    public ArrayList<Task> getTask(){
+        return
+    }
+
+    public void setName(){
         this.name = name;
     }
 
-    public String getNama(){
+    public String getName(){
         return name;
     }
 }
