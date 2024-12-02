@@ -1,13 +1,25 @@
 package dev.kel3pbo.todolist.Model;
+import jakarta.persistence.*;
+
 import java.util.Date;
+@Entity
+@Table(name ="status")
 public class Status {
     private String name;
     private Date lastUpdated;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     public Status(String name) {
         this.name = name;
         this.lastUpdated = new Date();
     }
+
+    public Status() {
+
+    }
+
     public void setName(String name) {
         this.name = name;
         this.lastUpdated = new Date();
@@ -17,5 +29,13 @@ public class Status {
     }
     public Date getLastUpdated() {
         return lastUpdated;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

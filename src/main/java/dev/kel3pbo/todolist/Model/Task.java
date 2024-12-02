@@ -1,23 +1,37 @@
 package dev.kel3pbo.todolist.Model;
 
-import java.util.Date;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+@Entity
+@Table(name ="tasks")
 public class Task implements Notifiable {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String title;
     private String description;
     private String priority;
-    private Date deadline;
+    private LocalDate deadline;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "status_id", referencedColumnName = "id")
     private Status status;
 
-    public Task( String title, String description, String priority, Date deadline) {
+    public Task( String title, String description, String priority, LocalDate deadline) {
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.deadline = deadline;
         this.status = new Status("Not Started");
     }
-    public int getId() {
+
+    public Task() {
+
+    }
+
+    public long getId() {
         return id;
     }
 
@@ -45,11 +59,11 @@ public class Task implements Notifiable {
         this.priority = priority;
     }
 
-    public Date getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
     }
 
@@ -59,14 +73,12 @@ public class Task implements Notifiable {
 
     public void updateStatus(String statusBaru) {
         status.setName(statusBaru);
-
     }
 
     public boolean isNearDeadline() {
-        Date today = new Date();
-        long diff = deadline.getTime() - today.getTime();
-        long diffDays = diff / (24 * 60 * 60 * 1000);
-        return diffDays <= 3;
+        LocalDate today = LocalDate.now();
+        long diffDays = ChronoUnit.DAYS.between(today, deadline);
+        return diffDays <= 3 && diffDays >= 0;
     }
 
     @Override

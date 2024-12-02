@@ -1,10 +1,19 @@
 package dev.kel3pbo.todolist.Model;
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
+@Table(name = "category")
 public class Category {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
-    private List<Task> tasks;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "category_id")
+    private List<Task> tasks = new ArrayList<>();
+
 
     // Constructor
     public Category(String name) {
@@ -12,7 +21,10 @@ public class Category {
         this.tasks = new ArrayList<>();
     }
 
-    // Getter for name
+    public Category() {
+
+    }
+
     public String getName() {
         return name;
     }
@@ -35,6 +47,14 @@ public class Category {
     // Get the list of tasks in the category
     public List<Task> getTasks() {
         return tasks;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
 

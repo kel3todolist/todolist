@@ -1,21 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dev.kel3pbo.todolist.Model;
 
-/**
- *
- * @author zoyadzaka
- */
-public class MonthlyStatistic extends Statistik{
-     @Override
-    public double calculateCompletionRate(){
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class MonthlyStatistic extends Statistic {
+    private final int month;
+    private final int year;
+
+    public MonthlyStatistic(List<Task> tasks) {
+        super(tasks);
+        LocalDate today = LocalDate.now();
+        this.month = today.getMonthValue();
+        this.year = today.getYear();
+    }
+
+    private static List<Task> filterTasksForMonth(List<Task> tasks, int month, int year) {
+        return tasks.stream()
+                .filter(task -> task.getDeadline().getMonthValue() == month && task.getDeadline().getYear() == year)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public double calculateCompletionRate() {
         return (double) completedTask / totalTask * 100;
     }
-    
+
     @Override
-    public String generateReport(){
-    
+    public String generateReport() {
+        return "Monthly Statistic Report for " + Month.of(month) + " " + year + ":\n" +
+                "Total Tasks: " + totalTask + "\n" +
+                "Completed Tasks: " + completedTask + "\n" +
+                "On Progress Tasks: " + onProgressTask + "\n" +
+                "Not Started Tasks: " + notStartedTask + "\n" +
+                "Completion Rate: " + String.format("%.2f", calculateCompletionRate()) + "%";
     }
+
 }
