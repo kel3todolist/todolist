@@ -1,4 +1,4 @@
-package dev.kel3pbo.todolist.repository;
+package dev.kel3pbo.todolist.Repository;
 
 import dev.kel3pbo.todolist.Model.Status;
 import dev.kel3pbo.todolist.Model.Task;
@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByDeadline(LocalDate deadline);
-    List<Task> findByStatus(Status status);
+    List<Task> findByStatus_Name(String statusName);
     List<Task> findByPriority(String priority);
 }
