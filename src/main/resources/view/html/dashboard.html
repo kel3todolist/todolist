@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Dashboard</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container">
+        <h1 class="text-4xl font-bold mb-6 text-center">To-Do List Dashboard</h1>
+        <div class="grid grid-cols-3 gap-6">
+            <!-- Card for Task List -->
+            <div class="bg-blue-100 p-6 rounded shadow hover:shadow-lg transition" href="managetask.html">
+                <h2 class="text-xl font-bold text-blue-700">Manage Tasks</h2>
+                <p class="text-gray-600 mt-2">View and manage all tasks in your to-do list.</p>
+                <a href="task-list.html" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Go to Tasks</a>
+            </div>
+
+            <!-- Card for Create Task -->
+            <div class="bg-green-100 p-6 rounded shadow hover:shadow-lg transition">
+                <h2 class="text-xl font-bold text-green-700">Create Task</h2>
+                <p>Add a new task to your list with priority and deadlines.</p>
+                <a href="create-task.html" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded">Create New Task</a>
+            </div>
+
+            <!-- Card for Categories -->
+            <div class="bg-yellow-100 p-6 rounded shadow hover:shadow-lg transition">
+                <h2 class="text-xl font-bold text-yellow-700">Manage Categories</h2>
+                <p>Organize tasks by categories to simplify your workflow.</p>
+                <a href="category-list.html" class="mt-4 inline-block bg-yellow-500 text-white px-4 py-2 rounded">Go to Categories</a>
+            </div>
+
+            <!-- Card for Statistics -->
+            <div class="bg-purple-100 p-6 rounded shadow hover:shadow-lg transition">
+                <h2 class="text-xl font-bold text-purple-700">View Statistics</h2>
+                <p>Analyze your task completion progress.</p>
+                <a href="task-statistics.html" class="mt-4 inline-block bg-purple-500 text-white px-4 py-2 rounded">View Statistics</a>
+            </div>
+
+            <!-- Card for Notifications -->
+            <div class="bg-red-100 p-6 rounded shadow hover:shadow-lg transition">
+                <h2 class="text-xl font-bold text-red-700">Notifications</h2>
+                <p>Stay updated with reminders for upcoming tasks.</p>
+                <a href="task-notifications.html" class="mt-4 inline-block bg-red-500 text-white px-4 py-2 rounded">View Notifications</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
