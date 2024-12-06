@@ -26,6 +26,16 @@
 body{
     height: 100vh;
     background: var(--body-color);
+    transition: var(--trans-04);
+}
+
+body.dark{
+    --body-color: #18191A;
+    --sidebar-color: #242526;
+    --primary-color: #eb6e00;
+    --primary-color-light: #3A3B3C;
+    --toggle-color: #FFF;
+    --text-color: #CCC;
 }
 
 /* ======= Sidebar ======= */
@@ -37,6 +47,11 @@ body{
     width: 250px;
     padding: 10px 14px;
     background: var(--sidebar-color);
+    transition: var(--trans-05);
+}
+
+.sidebar.close{
+    width: 88px;
 }
 
 /* ======= Resuble CSS ======= */
@@ -44,6 +59,13 @@ body{
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
+    transition: var(--trans-04);
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.close .text{
+    opacity: 0;
 }
 
 .sidebar .image{
@@ -97,8 +119,8 @@ header .image-text .header.text{
     font-weight: 600;  
 }
 
-.header.text .profession{
-    margin-top: -2px;  
+.sidebar .text .name{
+    font-size: 25px;
 }
 
 .sidebar header .toggle{
@@ -117,8 +139,13 @@ header .image-text .header.text{
     font-size: 22px;
 }
 
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
 .sidebar .search-box{
     background: var(--primary-color-light);
+    border-radius: 6px;
 }
 
 .search-box input{
@@ -147,4 +174,74 @@ header .image-text .header.text{
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text{
     color: var(--sidebar-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+
+.sidebar .menu-bar{
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-bar .mode{
+    position: relative;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+}
+
+.menu-bar .mode .moon-sun{
+    height: 50px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar .mode i{
+    position: absolute;    
+}
+
+.menu-bar .mode i.sun{
+    opacity: 0;   
+}
+
+.menu-bar .mode .toggle-switch{
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 60px;
+    cursor: pointer;
+    background: var(--primary-color-light);
+}
+
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: var(--toggle-color);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background: var(--sidebar-color);
+    transition: var(--trans-03);
+}
+
+body.dark .switch::before{
+    left: 25px;
 }

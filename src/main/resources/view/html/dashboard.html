@@ -11,10 +11,10 @@
     <!---- ========== ICON ========== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>Helloword</title>
+    <title>ToDoList</title>
 </head>
 <body>
-    <nav class="sidebar">
+    <nav class="sidebar close">
         <header>
             <div class="image-text">
                 <span class="image">
@@ -23,7 +23,6 @@
 
                 <div class="text header-text">
                     <span class="name">ToDoList</span>
-                    <span class="profession">Ingatlah Kegiatanmu</span>
                 </div>
 
                 <i class='bx bx-chevrons-right toggle'></i>
@@ -70,7 +69,22 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="bottom-content">
+                <li class="mode">
+                    <div class="moon-sun">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark Mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
         </div>
     </nav>
+
+    <script src="script.js"></script>
 </body>
 </html>
