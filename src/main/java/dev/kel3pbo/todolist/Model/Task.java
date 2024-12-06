@@ -24,11 +24,11 @@ public class Task implements Notifiable {
         this.description = description;
         this.priority = priority;
         this.deadline = deadline;
-        this.status = new Status("Not Started");
+        this.status = new Status();
     }
 
     public Task() {
-
+        this.status = new Status();
     }
 
     public long getId() {

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task List</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .high-priority {
+            color: red;
+            font-weight: bold;
+        }
+        .medium-priority {
+            color: orange;
+        }
+        .low-priority {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<h1>Task List</h1>
+<a href="/tasks/new">Create New Task</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Deadline</th>
+        <th>Last Updated</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.priority}"
+            th:class="${task.priority == 'High' ? 'high-priority' :
+                               task.priority == 'Medium' ? 'medium-priority' :
+                               'low-priority'}"></td>
+        <td th:text="${task.status.name}"></td>
+        <td th:text="${task.deadline}"></td>
+        <td th:text="${task.status.getLastUpdated()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -11,13 +11,15 @@ public class Status {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     public Status(String name) {
         this.name = name;
         this.lastUpdated = new Date();
     }
 
     public Status() {
-
+        this.name = "Not Started";
+        this.lastUpdated = new Date();
     }
 
     public void setName(String name) {
@@ -29,10 +31,6 @@ public class Status {
     }
     public Date getLastUpdated() {
         return lastUpdated;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getId() {
