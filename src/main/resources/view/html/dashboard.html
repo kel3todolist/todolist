@@ -2,49 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List Dashboard</title>
-    <link href="style.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" context="width=device-width, initial-scale=1.0">
+
+    <!---- ========== CSS ========== -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!---- ========== ICON ========== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Helloword</title>
 </head>
-<body class="bg-gray-100 text-gray-800">
-    <div class="container">
-        <h1 class="text-4xl font-bold mb-6 text-center">To-Do List Dashboard</h1>
-        <div class="grid grid-cols-3 gap-6">
-            <!-- Card for Task List -->
-            <div class="bg-blue-100 p-6 rounded shadow hover:shadow-lg transition" href="managetask.html">
-                <h2 class="text-xl font-bold text-blue-700">Manage Tasks</h2>
-                <p class="text-gray-600 mt-2">View and manage all tasks in your to-do list.</p>
-                <a href="task-list.html" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Go to Tasks</a>
-            </div>
+<body>
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="logo.png" alt="logo">
+                </span>
 
-            <!-- Card for Create Task -->
-            <div class="bg-green-100 p-6 rounded shadow hover:shadow-lg transition">
-                <h2 class="text-xl font-bold text-green-700">Create Task</h2>
-                <p>Add a new task to your list with priority and deadlines.</p>
-                <a href="create-task.html" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded">Create New Task</a>
-            </div>
+                <div class="text header-text">
+                    <span class="name">ToDoList</span>
+                    <span class="profession">Ingatlah Kegiatanmu</span>
+                </div>
 
-            <!-- Card for Categories -->
-            <div class="bg-yellow-100 p-6 rounded shadow hover:shadow-lg transition">
-                <h2 class="text-xl font-bold text-yellow-700">Manage Categories</h2>
-                <p>Organize tasks by categories to simplify your workflow.</p>
-                <a href="category-list.html" class="mt-4 inline-block bg-yellow-500 text-white px-4 py-2 rounded">Go to Categories</a>
+                <i class='bx bx-chevrons-right toggle'></i>
+                
             </div>
+        </header>
 
-            <!-- Card for Statistics -->
-            <div class="bg-purple-100 p-6 rounded shadow hover:shadow-lg transition">
-                <h2 class="text-xl font-bold text-purple-700">View Statistics</h2>
-                <p>Analyze your task completion progress.</p>
-                <a href="task-statistics.html" class="mt-4 inline-block bg-purple-500 text-white px-4 py-2 rounded">View Statistics</a>
-            </div>
-
-            <!-- Card for Notifications -->
-            <div class="bg-red-100 p-6 rounded shadow hover:shadow-lg transition">
-                <h2 class="text-xl font-bold text-red-700">Notifications</h2>
-                <p>Stay updated with reminders for upcoming tasks.</p>
-                <a href="task-notifications.html" class="mt-4 inline-block bg-red-500 text-white px-4 py-2 rounded">View Notifications</a>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="Search" placeholder="Search....">
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-task icon'></i>
+                            <span class="text nav-text">Create Task</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-category-alt icon'></i>
+                            <span class="text nav-text">Category</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-stats icon'></i>
+                            <span class="text nav-text">Statistics</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-notification icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
 </body>
 </html>
