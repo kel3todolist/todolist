@@ -1,23 +1,23 @@
-const body = document.querySelector("body"),
-    sidebar = body.querySelector(".sidebar"),
-    toggle = body.querySelector(".toggle"),
-    searchBtn = body.querySelector(".search-box"),
-    modeSwitch = body.querySelector(".toggle-switch"),
-    modeText = body.querySelector(".mode-text");
+// Check if dark mode is enabled in localStorage when the page is loaded
+window.addEventListener('DOMContentLoaded', () => {
+    const body = document.body;
 
-    toggle.addEventListener("click", () =>{
-        sidebar.classList.toggle("close");
-    });
-    searchBtn.addEventListener("click", () =>{
-        sidebar.classList.remove("close");
-    });
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark');  // Apply dark mode immediately
+    } else {
+        body.classList.remove('dark');
+    }
 
-    modeSwitch.addEventListener("click", () =>{
-        body.classList.toggle("dark");
+    // Setup the toggle button event listener
+    const toggleSwitch = document.querySelector('.toggle-switch');
+    toggleSwitch.addEventListener('click', () => {
+        body.classList.toggle('dark');
 
-        if(body.classList.contains("dark")){
-            modeText.innerText = "Light Mode"
-        }else{
-            modeText.innerText = "Dark Mode"
+        // Save the current state of dark mode in localStorage
+        if (body.classList.contains('dark')) {
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
         }
     });
+});

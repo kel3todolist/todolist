@@ -45,14 +45,10 @@ body.dark{
     left: 0;
     height: 100%;
     width: 250px;
-    padding: 10px 14px;
+    padding: 10px 15px;
     background: var(--sidebar-color);
     transition: var(--trans-05);
     z-index: 100;
-}
-
-.sidebar.close{
-    width: 88px;
 }
 
 /* ======= Resuble CSS ======= */
@@ -61,12 +57,7 @@ body.dark{
     font-weight: 500;
     color: var(--text-color);
     transition: var(--trans-04);
-    white-space: nowrap;
     opacity: 1;
-}
-
-.sidebar.close .text{
-    opacity: 0;
 }
 
 .sidebar .image{
@@ -89,7 +80,7 @@ body.dark{
     align-items: center;
     justify-content: center;
     min-width: 60px;
-    font-size: 20px;   
+    font-size: 20px;
 }
 
 .sidebar li .icon,
@@ -106,7 +97,7 @@ body.dark{
     width: 40px;
     border-radius: 6px;
 }
-  
+
 .sidebar header .image-text{
     display: flex;
     align-items: center;
@@ -118,7 +109,7 @@ header .image-text .header.text{
 }
 
 .header.text .name{
-    font-weight: 600;  
+    font-weight: 600;
 }
 
 .sidebar .text .name{
@@ -142,34 +133,12 @@ header .image-text .header.text{
     transition: var(--trans-03);
 }
 
-.sidebar.close header .toggle{
-    transform: translateY(-50%);
-}
-
 body.dark .sidebar header .toggle{
     color: var(--text-color);
 }
 
 .sidebar .menu{
     margin-top: 35px;
-}
-
-.sidebar .search-box{
-    background: var(--primary-color-light);
-    border-radius: 6px;
-    transition: var(--trans-05);
-}
-
-.search-box input{
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    background: var(--primary-color-light);
-    transition: var(--trans-05);
 }
 
 .sidebar li a{
@@ -222,7 +191,7 @@ body.dark .sidebar li a:hover .text{
 }
 
 .menu-bar .mode i.sun{
-    opacity: 0;   
+    opacity: 0;
 }
 
 body.dark .menu-bar .mode i.sun{
@@ -288,7 +257,115 @@ body.dark .switch::before{
     padding: 8px 40px;
 }
 
-.sidebar.close ~ .home{
-    left: 88px;
-    width: calc(100% - 88px);
+/*===================================== CREATE TASK ===========================================*/
+
+.containertask {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    padding: 8px 40px;
+}
+.containertask header {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+}
+.containertask .form {
+    margin-top: 5px;
+}
+.form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+.input-box label {
+    color: #333;
+}
+
+.form .text-area {
+    width: 100%;
+    margin-top: 20px;
+}
+.text-area label {
+    color: #333;
+}
+
+.text-area textarea{
+    height: 150px;
+    padding-top: 10px;
+}
+
+.form :where(.input-box input, .select-box, .text-area textarea) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+.input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+    display: flex;
+    column-gap: 15px;
+}
+.form .priority-box {
+    margin-top: 20px;
+}
+.priority-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+.form :where(.priority-option, .priority) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+}
+.form .priority {
+    column-gap: 5px;
+}
+.priority input {
+    accent-color: var(--primary-color);
+}
+.form :where(.priority input, .priority label) {
+    cursor: pointer;
+}
+.priority label {
+    color: #707070;
+}
+.address :where(input, .select-box) {
+    margin-top: 15px;
+}
+
+.form button {
+    height: 55px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #FF7D0A;
+}
+.form button:hover {
+    background: var(--primary-color);
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+    .form :where(.priority-option, .priority) {
+        row-gap: 15px;
+    }
 }

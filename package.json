@@ -1,0 +1,28 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss build src/main/resources/static/css/styles.css -o src/main/resources/static/css/styles-output.css",
+    "dev": "tailwindcss -i src/main/resources/static/css/styles.css -o src/main/resources/static/css/styles-output.css --watch"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kel3todolist/todolist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kel3todolist/todolist/issues"
+  },
+  "homepage": "https://github.com/kel3todolist/todolist#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "flowbite": "^2.5.2",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16"
+  }
+}
