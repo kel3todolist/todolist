@@ -265,12 +265,7 @@ body.dark .switch::before{
     width: 100%;
     padding: 8px 40px;
 }
-.containertask header {
-    font-size: 1.5rem;
-    color: #333;
-    font-weight: 500;
-    text-align: center;
-}
+
 .containertask .form {
     margin-top: 5px;
 }
@@ -279,7 +274,7 @@ body.dark .switch::before{
     margin-top: 20px;
 }
 .input-box label {
-    color: #333;
+    color: var(--text-color);
 }
 
 .form .text-area {
@@ -287,7 +282,7 @@ body.dark .switch::before{
     margin-top: 20px;
 }
 .text-area label {
-    color: #333;
+    color: var(--text-color);
 }
 
 .text-area textarea{
@@ -301,7 +296,7 @@ body.dark .switch::before{
     width: 100%;
     outline: none;
     font-size: 1rem;
-    color: #707070;
+    color: var(--text-color);
     margin-top: 8px;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -318,7 +313,7 @@ body.dark .switch::before{
     margin-top: 20px;
 }
 .priority-box h3 {
-    color: #333;
+    color: var(--text-color);
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 8px;
@@ -339,7 +334,7 @@ body.dark .switch::before{
     cursor: pointer;
 }
 .priority label {
-    color: #707070;
+    color: var(--text-color);
 }
 .address :where(input, .select-box) {
     margin-top: 15px;
