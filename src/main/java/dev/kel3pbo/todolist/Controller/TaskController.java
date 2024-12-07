@@ -80,5 +80,12 @@ public class TaskController {
         taskService.updateTask(id, updatedTask); // Update data task
         return "redirect:/"; // Redirect ke halaman daftar task
     }
+    // Mengupdate status task
+    @PostMapping("/update-status/{id}")
+    public String updateTaskStatus(@PathVariable("id") Long id, @RequestParam("status") String statusName) {
+        taskService.updateStatus(id, statusName);
+        return "redirect:/"; // Redirect ke dashboard setelah status diupdate
+    }
+
 
 }

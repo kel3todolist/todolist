@@ -31,7 +31,7 @@ build/
 
 # Application properties (Do not include sensitive data in version control)
 # Uncomment below line if you want to ignore the application.properties file
-# /src/main/resources/application.properties
+/src/main/resources/application.properties
 
 # VS Code
 .vscode/

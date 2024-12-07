@@ -38,6 +38,15 @@ public class TaskService {
             throw new RuntimeException("Task dengan ID " + id + " tidak ditemukan.");
         }
     }
+    public void updateStatus(Long id, String statusName) {
+        Optional<Task> optionalTask = taskRepository.findById(id);
+        if (optionalTask.isPresent()) {
+            Task task = optionalTask.get();
+            task.updateStatus(statusName); // Update status di model
+            taskRepository.save(task);    // Simpan perubahan ke database
+        }
+    }
+
 
     // Menghapus task berdasarkan ID
     public void deleteTask(Long id) {
