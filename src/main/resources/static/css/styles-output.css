@@ -279,7 +279,7 @@ body.dark .switch::before{
   background-color: var(--primary-color-light);
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 16px;
+  padding: 15px;
   width: calc(33.33% - 16px);
   /* 3 boxes per row */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -293,7 +293,7 @@ body.dark .switch::before{
 .task-popup {
   display: none;
   position: relative;
-  bottom: 0%;
+  bottom: -2%;
   /* Position the popup below the task-box */
   left: 80%;
   transform: translateX(-50%);
@@ -338,6 +338,52 @@ body.dark .switch::before{
 .popup-edit i,
 .popup-remove i {
   margin-right: 8px;
+}
+
+/*===================================== DROPDOWN ===========================================*/
+
+/* Styling untuk dropdown */
+
+select {
+  background-color: var(--primary-color-light);
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  width: 180px;
+}
+
+/* Styling untuk dropdown saat hover */
+
+select:hover {
+  border-color: var(--primary-color-light);
+}
+
+/* Styling untuk dropdown saat fokus */
+
+select:focus {
+  color: var(--text-color);
+  outline: none;
+  border-color: var(--primary-color-light);
+  background-color: #fff;
+}
+
+/* Styling untuk option di dalam dropdown */
+
+option {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Styling untuk label "Status:" */
+
+strong {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-right: 10px;
+  font-weight: bold;
 }
 
 /*===================================== CREATE TASK ===========================================*/

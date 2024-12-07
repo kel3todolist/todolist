@@ -61,4 +61,24 @@ public class TaskController {
         taskService.deleteTask(id);
         return "redirect:/"; // Redirect ke dashboard setelah delete
     }
+
+    // Menampilkan form edit task berdasarkan ID
+    @GetMapping("/edittask/{id}")
+    public String showEditTaskForm(@PathVariable("id") Long id, Model model) {
+        Optional<Task> task = taskService.getTaskById(id);
+        if (task.isPresent()) {
+            model.addAttribute("task", task.get()); // Kirim data task ke template
+            return "edittask"; // Template form edit task
+        } else {
+            return "redirect:/"; // Redirect jika task tidak ditemukan
+        }
+    }
+
+    // Menangani pengiriman form untuk update task
+    @PostMapping("/update-task/{id}")
+    public String updateTask(@PathVariable("id") Long id, @ModelAttribute("task") Task updatedTask) {
+        taskService.updateTask(id, updatedTask); // Update data task
+        return "redirect:/"; // Redirect ke halaman daftar task
+    }
+
 }

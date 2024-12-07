@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,15 +11,15 @@
     <!-- ========== ICON ========== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>ToDoList - Dashboard</title>
+    <title>ToDoList</title>
 </head>
 <body>
 <nav class="sidebar">
     <header>
         <div class="image-text">
-                <span class="image">
-                    <img src="/assets/logo.png" alt="logo">
-                </span>
+            <span class="image">
+                <img src="/assets/logo.png" alt="logo">
+            </span>
             <div class="text header-text">
                 <span class="name">ToDoList</span>
             </div>
@@ -37,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="/createtask">
+                    <a href="/new">
                         <i class='bx bx-task icon'></i>
                         <span class="text nav-text">Create Task</span>
                     </a>
@@ -79,40 +78,57 @@
 </nav>
 
 <section class="home">
-    <div class="text">Dashboard</div>
-    <div class="containerdashboard">
-        <div class="task-container">
-            <!-- Box untuk setiap task -->
-            <div th:each="task : ${tasks}" class="task-box">
-                <h3 th:text="${task.title}">Task Title</h3>
-                <p th:text="${task.description}">Task Description</p>
-                <p><strong>Status:</strong>
-                <form th:action="@{/update-status/{id}(id=${task.id})}" method="post">
-                    <select name="status" onchange="this.form.submit()">
-                        <option th:value="NOT_STARTED" th:selected="${task.status.name == 'NOT_STARTED'}">Not Started</option>
-                        <option th:value="ON_PROGRESS" th:selected="${task.status.name == 'ON_PROGRESS'}">On Progress</option>
-                        <option th:value="COMPLETED" th:selected="${task.status.name == 'COMPLETED'}">Completed</option>
-                    </select>
-                </form>
-                </p>
-                <p><strong>Priority:</strong> <span th:text="${task.priority}">Priority</span></p>
-                <p><strong>Deadline:</strong> <span th:text="${task.deadline}">Deadline</span></p>
-                <p><strong>Last Update:</strong> <span th:text="${task.status.lastUpdated}">Last Update</span></p>
+    <div class="text">Edit Task</div>
+    <section class="containertask">
+        <!-- Form untuk mengedit task -->
+        <form th:action="@{/update-task/{id}(id=${task.id})}" method="post" class="form">
+            <input type="hidden" name="taskId" th:value="${task.id}" />
 
-                <!-- Pop-up menu for edit and remove options -->
-                <div class="task-popup">
-                    <a th:href="@{/edittask/{id}(id=${task.id})}" class="popup-edit" title="Edit">
-                        <i class='bx bx-edit'></i> Edit
-                    </a>
-                    <a th:href="@{/delete/{id}(id=${task.id})}" class="popup-remove" title="Remove">
-                        <i class='bx bx-trash'></i> Remove
-                    </a>
-                    </a>
+            <div class="input-box">
+                <label>Title Task</label>
+                <input type="text" name="title" placeholder="Enter Title Task" th:value="${task.title}" required />
+            </div>
+
+            <div class="text-area">
+                <label>Description</label>
+                <textarea name="description" placeholder="Enter Description Task" required
+                          th:text="${task.description}"></textarea>
+            </div>
+
+            <div class="priority-box">
+                <h3>Priority</h3>
+                <div class="priority-option">
+                    <div class="priority">
+                        <input type="radio" id="check-low" name="priority" value="Low"
+                               th:checked="${task.priority == 'Low'}" />
+                        <label for="check-low">Low</label>
+                    </div>
+
+                    <div class="priority">
+                        <input type="radio" id="check-medium" name="priority" value="Medium"
+                               th:checked="${task.priority == 'Medium'}" />
+                        <label for="check-medium">Medium</label>
+                    </div>
+
+                    <div class="priority">
+                        <input type="radio" id="check-high" name="priority" value="High"
+                               th:checked="${task.priority == 'High'}" />
+                        <label for="check-high">High</label>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+            <div class="input-box">
+                <label for="date">Deadline</label>
+                <input type="date" id="date" name="deadline" th:value="${task.deadline}" required />
+            </div>
+
+            <button type="submit">Update Task</button>
+        </form>
+    </section>
 </section>
+
+
 <script src="/js/script.js"></script>
 </body>
 </html>
