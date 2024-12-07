@@ -3,87 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" context="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!---- ========== CSS ========== -->
+    <!-- ========== CSS ========== -->
     <link rel="stylesheet" href="/css/styles.css">
 
-    <!---- ========== ICON ========== -->
+    <!-- ========== ICON ========== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>ToDoList</title>
+    <title>ToDoList - Dashboard</title>
 </head>
 <body>
-    <nav class="sidebar">
-        <header>
-            <div class="image-text">
+<nav class="sidebar">
+    <header>
+        <div class="image-text">
                 <span class="image">
                     <img src="/assets/logo.png" alt="logo">
                 </span>
-
-                <div class="text header-text">
-                    <span class="name">ToDoList</span>
-                </div>
-
-            </div>
-        </header>
-
-        <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-home-alt icon'></i>
-                            <span class="text nav-text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="/createtask">
-                            <i class='bx bx-task icon'></i>
-                            <span class="text nav-text">Create Task</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="/category">
-                            <i class='bx bx-category-alt icon'></i>
-                            <span class="text nav-text">Category</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="/statistic">
-                            <i class='bx bx-stats icon'></i>
-                            <span class="text nav-text">Statistics</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="/notification">
-                            <i class='bx bx-notification icon'></i>
-                            <span class="text nav-text">Notifications</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="mode">
-                    <div class="moon-sun">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark Mode</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+            <div class="text header-text">
+                <span class="name">ToDoList</span>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <section class="home">
-        <div class="text">Dashboard</div>
-        <div class="konten">text</div>
-    </section>
+    <div class="menu-bar">
+        <div class="menu">
+            <ul class="menu-links">
+                <li class="nav-link">
+                    <a href="/">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/new">
+                        <i class='bx bx-task icon'></i>
+                        <span class="text nav-text">Create Task</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/category">
+                        <i class='bx bx-category-alt icon'></i>
+                        <span class="text nav-text">Category</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/statistic">
+                        <i class='bx bx-stats icon'></i>
+                        <span class="text nav-text">Statistics</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/notification">
+                        <i class='bx bx-notification icon'></i>
+                        <span class="text nav-text">Notifications</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-    <script src="/js/script.js"></script>
+        <div class="bottom-content">
+            <li class="mode">
+                <div class="moon-sun">
+                    <i class='bx bx-moon icon moon'></i>
+                    <i class='bx bx-sun icon sun'></i>
+                </div>
+                <span class="mode-text text">Dark Mode</span>
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+            </li>
+        </div>
+    </div>
+</nav>
+
+<section class="home">
+    <div class="text">Dashboard</div>
+    <div class="task-container">
+        <!-- Box untuk setiap task -->
+        <div th:each="task : ${tasks}" class="task-box">
+            <h3 th:text="${task.title}">Task Title</h3>
+            <p th:text="${task.description}">Task Description</p>
+            <p><strong>Priority:</strong> <span th:text="${task.priority}">Priority</span></p>
+            <p><strong>Deadline:</strong> <span th:text="${task.deadline}">Deadline</span></p>
+        </div>
+    </div>
+</section>
+
+<script src="/js/script.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/tasks")
+@RequestMapping("/")
 public class TaskController {
     private final TaskService taskService;
 
@@ -21,24 +21,39 @@ public class TaskController {
     }
 
     // Menampilkan form untuk membuat task
-    @GetMapping("/new")
+    @GetMapping("/createtask")
     public String showCreateTaskForm(Model model) {
         model.addAttribute("task", new Task()); // Mengirimkan objek kosong untuk diisi di form
-        return "create-task"; // Nama template untuk form HTML
+        return "createtask"; // Nama template untuk form HTML
     }
 
     // Menangani pengiriman form untuk membuat task
     @PostMapping
     public String createTask(@ModelAttribute("task") Task task) {
         taskService.addTask(task); // Simpan task ke database
-        return "redirect:/tasks"; // Redirect ke halaman daftar task
+        return "redirect:/createtask"; // Redirect ke halaman daftar task
     }
 
     // Menampilkan daftar semua task
     @GetMapping
     public String listAllTasks(Model model) {
         model.addAttribute("tasks", taskService.getAllTasks());
-        return "task-list"; // Template untuk menampilkan semua task
+        return "dashboard"; // Template untuk menampilkan semua task
+    }
+
+    @GetMapping("/category")
+    public String showCategory() {
+        return "category"; // Mengarahkan ke template category.html
+    }
+
+    @GetMapping("/statistic")
+    public String showStatistic() {
+        return "statistic"; // Mengarahkan ke template statistic.html
+    }
+
+    @GetMapping("/notification")
+    public String showNotification() {
+        return "notification"; // Mengarahkan ke template notification.html
     }
 }
 
