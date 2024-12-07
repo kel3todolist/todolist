@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="/new">
+                    <a href="/createtask">
                         <i class='bx bx-task icon'></i>
                         <span class="text nav-text">Create Task</span>
                     </a>
@@ -79,16 +79,30 @@
 
 <section class="home">
     <div class="text">Dashboard</div>
-    <div class="task-container">
-        <!-- Box untuk setiap task -->
-        <div th:each="task : ${tasks}" class="task-box">
-            <h3 th:text="${task.title}">Task Title</h3>
-            <p th:text="${task.description}">Task Description</p>
-            <p><strong>Priority:</strong> <span th:text="${task.priority}">Priority</span></p>
-            <p><strong>Deadline:</strong> <span th:text="${task.deadline}">Deadline</span></p>
+    <div class="containerdashboard">
+        <div class="task-container">
+            <!-- Box untuk setiap task -->
+            <div th:each="task : ${tasks}" class="task-box">
+                <h3 th:text="${task.title}">Task Title</h3>
+                <p th:text="${task.description}">Task Description</p>
+                <p><strong>Priority:</strong> <span th:text="${task.priority}">Priority</span></p>
+                <p><strong>Deadline:</strong> <span th:text="${task.deadline}">Deadline</span></p>
+
+                <!-- Pop-up menu for edit and remove options -->
+                <div class="task-popup">
+                    <a href="/manage-task/{task.id}" class="popup-edit" title="Edit">
+                        <i class='bx bx-edit'></i> Edit
+                    </a>
+                    <a href="/remove-task/{task.id}" class="popup-remove" title="Remove">
+                        <i class='bx bx-trash'></i> Remove
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+
 
 <script src="/js/script.js"></script>
 </body>
