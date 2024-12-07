@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,8 +94,9 @@
                     <a href="/manage-task/{task.id}" class="popup-edit" title="Edit">
                         <i class='bx bx-edit'></i> Edit
                     </a>
-                    <a href="/remove-task/{task.id}" class="popup-remove" title="Remove">
+                    <a th:href="@{/delete/{id}(id=${task.id})}" class="popup-remove" title="Remove">
                         <i class='bx bx-trash'></i> Remove
+                    </a>
                     </a>
                 </div>
             </div>

@@ -5,10 +5,9 @@ import dev.kel3pbo.todolist.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -31,7 +30,7 @@ public class TaskController {
     @PostMapping
     public String createTask(@ModelAttribute("task") Task task) {
         taskService.addTask(task); // Simpan task ke database
-        return "redirect:/createtask"; // Redirect ke halaman daftar task
+        return "redirect:/"; // Redirect ke halaman daftar task
     }
 
     // Menampilkan daftar semua task
@@ -55,5 +54,11 @@ public class TaskController {
     public String showNotification() {
         return "notification"; // Mengarahkan ke template notification.html
     }
+    
+    // Menghapus task berdasarkan ID
+    @GetMapping("/delete/{id}")
+    public String deleteTask(@PathVariable("id") Long id) {
+        taskService.deleteTask(id);
+        return "redirect:/"; // Redirect ke dashboard setelah delete
+    }
 }
-

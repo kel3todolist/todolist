@@ -1,33 +1,51 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Build files and folders
+/target/
+!/src/main/**/target/
+!/src/test/**/target/
+build/
+!/src/main/**/build/
+!/src/test/**/build/
 
-### STS ###
+# IDE-specific files
+## STS (Spring Tool Suite)
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
+## IntelliJ IDEA
+.idea/
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
+## NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
+# Application properties (Do not include sensitive data in version control)
+# Uncomment below line if you want to ignore the application.properties file
+# /src/main/resources/application.properties
+
+# VS Code
 .vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.bak
+*.tmp
+
+# Maven wrapper files
+!.mvn/wrapper/maven-wrapper.jar
+
+# Misc
+HELP.md
