@@ -475,3 +475,74 @@ strong {
         row-gap: 15px;
     }
 }
+/*===================================== CATEGORY BOX ===========================================*/
+.containercategory {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    padding: 8px 40px;
+}
+
+.category-container {
+    color: var(--text-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.category-box {
+    background-color: var(--primary-color-light);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: calc(33.33% - 16px); /* 3 boxes per row */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden; /* Ensure the popup stays inside the box */
+}
+
+/* Pop-up menu hidden by default */
+.category-popup {
+    display: none;
+    position: relative;
+    bottom: -2%; /* Position the popup below the category-box */
+    left: 80%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color-light);
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 5px;
+    width: 40%; /* Width of the popup menu */
+    z-index: 10; /* Ensure it appears above the category box */
+}
+
+.category-box:hover .category-popup {
+    display: block; /* Show the popup when hovering */
+}
+
+/* Style the popup buttons */
+.popup-edit,
+.popup-remove {
+    display: block;
+    padding: 8px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    transition: background-color 0.3s;
+}
+
+.popup-edit:hover,
+.popup-remove:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Icon styling */
+.popup-edit i,
+.popup-remove i {
+    margin-right: 8px;
+}

@@ -40,11 +40,6 @@ public class TaskController {
         return "dashboard"; // Template untuk menampilkan semua task
     }
 
-    @GetMapping("/category")
-    public String showCategory() {
-        return "category"; // Mengarahkan ke template category.html
-    }
-
     @GetMapping("/statistic")
     public String showStatistic() {
         return "statistic"; // Mengarahkan ke template statistic.html

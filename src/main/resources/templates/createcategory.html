@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,15 +11,15 @@
     <!-- ========== ICON ========== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>ToDoList - Categories</title>
+    <title>ToDoList - Create Category</title>
 </head>
 <body>
 <nav class="sidebar">
     <header>
         <div class="image-text">
-                <span class="image">
-                    <img src="/assets/logo.png" alt="logo">
-                </span>
+            <span class="image">
+                <img src="/assets/logo.png" alt="logo">
+            </span>
             <div class="text header-text">
                 <span class="name">ToDoList</span>
             </div>
@@ -79,32 +78,19 @@
 </nav>
 
 <section class="home">
-    <div class="text">Categories</div>
-    <div class="container-category">
-        <div class="header-options">
-            <a href="/category/create" class="btn-create-category">
-                <i class='bx bx-plus'></i> Create Category
-            </a>
-        </div>
-        <div class="category-container">
-            <!-- Box untuk setiap kategori -->
-            <div th:each="category : ${categories}" class="category-box">
-                <h3 th:text="${category.name}">Category Name</h3>
-                <p><strong>Number of Tasks:</strong> <span th:text="${category.tasks.size()}">0</span></p>
-
-                <!-- Pop-up menu for edit and remove options -->
-                <div class="category-popup">
-                    <a th:href="@{/editcategory/{id}(id=${category.id})}" class="popup-edit" title="Edit">
-                        <i class='bx bx-edit'></i> Edit
-                    </a>
-                    <a th:href="@{/deletecategory/{id}(id=${category.id})}" class="popup-remove" title="Remove">
-                        <i class='bx bx-trash'></i> Remove
-                    </a>
-                </div>
+    <div class="text">Create Category</div>
+    <section class="containercategory">
+        <!-- Form untuk pembuatan kategori -->
+        <form action="/category/create" method="post" class="form">
+            <div class="input-box">
+                <label>Category Name</label>
+                <input type="text" name="name" placeholder="Enter Category Name" required />
             </div>
-        </div>
-    </div>
+            <button type="submit">Create Category</button>
+        </form>
+    </section>
 </section>
+
 <script src="/js/script.js"></script>
 </body>
 </html>

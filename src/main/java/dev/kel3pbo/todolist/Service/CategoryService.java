@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -20,13 +21,12 @@ public class CategoryService {
     }
 
     // Mendapatkan kategori berdasarkan ID
-    public Category getCategoryById(Long id) {
-        return categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Category not found"));
+    public Optional<Category> getCategoryById(Long id) {
+        return categoryRepository.findById(id);
     }
 
     // Membuat kategori baru
-    public Category createCategory(String name) {
-        Category category = new Category(name);
+    public Category addCategory(Category category) {
         return categoryRepository.save(category);
     }
 
@@ -52,5 +52,13 @@ public class CategoryService {
             throw new RuntimeException("Category not found");
         }
         categoryRepository.deleteById(id);
+    }
+
+    public void updateCategory(Long id, Category updatedCategory) {
+        Category existingCategory = categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+        existingCategory.setName(updatedCategory.getName());
+
+        categoryRepository.save(existingCategory);
     }
 }
