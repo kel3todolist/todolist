@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" context="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!---- ========== CSS ========== -->
     <link rel="stylesheet" href="/css/styles.css">
-
-    <!---- ========== ICON ========== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>ToDoList</title>
+    <title>ToDoList - Tasks in Category</title>
 </head>
 <body>
 <nav class="sidebar">
     <header>
         <div class="image-text">
-                <span class="image">
-                    <img src="/assets/logo.png" alt="logo">
-                </span>
-
+            <span class="image">
+                <img src="/assets/logo.png" alt="logo">
+            </span>
             <div class="text header-text">
                 <span class="name">ToDoList</span>
             </div>
-
         </div>
     </header>
 
@@ -50,7 +46,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="/statistic">
                         <i class='bx bx-stats icon'></i>
                         <span class="text nav-text">Statistics</span>
                     </a>
@@ -80,28 +76,41 @@
 </nav>
 
 <section class="home">
-    <div class="workspace">
-        <h1>Statistics Overview</h1>
-        <!-- Dropdown Filter -->
-        <div class="filter-container">
-            <label for="statFilter">Select Statistic:</label>
-            <select id="statFilter" onchange="updateStatistic()">
-                <option value="daily">Daily Statistic</option>
-                <option value="weekly">Weekly Statistic</option>
-                <option value="monthly">Monthly Statistic</option>
-            </select>
+    <div class="text" th:text="'Tasks in ' + ${category.name}">Tasks in Category</div>
+    <div class="containerdashboard">
+        <div class="task-container">
+            <!-- Box untuk setiap task -->
+            <div th:each="task : ${tasks}" class="task-box">
+                <h3 th:text="${task.title}">Task Title</h3>
+                <p th:text="${task.description}">Task Description</p>
+                <p><strong>Status:</strong>
+                <form th:action="@{/update-status/{id}(id=${task.id})}" method="post">
+                    <select name="status" onchange="this.form.submit()">
+                        <option th:value="NOT_STARTED" th:selected="${task.status.name == 'NOT_STARTED'}">Not Started</option>
+                        <option th:value="ON_PROGRESS" th:selected="${task.status.name == 'ON_PROGRESS'}">On Progress</option>
+                        <option th:value="COMPLETED" th:selected="${task.status.name == 'COMPLETED'}">Completed</option>
+                    </select>
+                </form>
+                </p>
+                <p><strong>Priority:</strong> <span th:text="${task.priority}">Priority</span></p>
+                <p><strong>Deadline:</strong> <span th:text="${task.deadline}">Deadline</span></p>
+                <p><strong>Last Update:</strong> <span th:text="${task.status.lastUpdated}">Last Update</span></p>
+
+                <!-- Pop-up menu for edit and remove options -->
+                <div class="task-popup">
+                    <a th:href="@{/edittask/{id}(id=${task.id})}" class="popup-edit" title="Edit">
+                        <i class='bx bx-edit'></i> Edit
+                    </a>
+                    <a th:href="@{/delete/{id}(id=${task.id})}" class="popup-remove" title="Remove">
+                        <i class='bx bx-trash'></i> Remove
+                    </a>
+
+                </div>
+            </div>
         </div>
-    
-        <!-- Card Utama -->
-        <div class="stat-card">
-            <h2 id="statTitle">Daily Statistic</h2>
-            <p id="statData">Total Tasks: 0</p>
-            <p id="statAdditional">Completed Tasks: 0 | On Progress: 0 | Not Started: 0</p>
-        </div>
-    </div>    
+    </div>
 </section>
 
 <script src="/js/script.js"></script>
-<script src="/js/statistics.js"></script>
 </body>
 </html>

@@ -80,7 +80,7 @@
 
 <section class="home">
     <div class="text">Categories</div>
-    <div class="container-category">
+    <div class="containercategory">
         <div class="header-options">
             <a href="/category/create" class="btn-create-category">
                 <i class='bx bx-plus'></i> Create Category
@@ -89,11 +89,16 @@
         <div class="category-container">
             <!-- Box untuk setiap kategori -->
             <div th:each="category : ${categories}" class="category-box">
-                <h3 th:text="${category.name}">Category Name</h3>
+                <h3>
+                    <a th:href="@{/category/{id}/tasks(id=${category.id})}" th:text="${category.name}">Category Name</a>
+                </h3>
                 <p><strong>Number of Tasks:</strong> <span th:text="${category.tasks.size()}">0</span></p>
 
                 <!-- Pop-up menu for edit and remove options -->
                 <div class="category-popup">
+                    <a th:href="@{/category/addtask/{id}(id=${category.id})}" class="popup-addtask" title="Add Task">
+                        <i class='bx bx-add-to-queue'></i> Add Task
+                    </a>
                     <a th:href="@{/editcategory/{id}(id=${category.id})}" class="popup-edit" title="Edit">
                         <i class='bx bx-edit'></i> Edit
                     </a>

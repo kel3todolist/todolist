@@ -3,6 +3,7 @@ package dev.kel3pbo.todolist.Service;
 import dev.kel3pbo.todolist.Model.Category;
 import dev.kel3pbo.todolist.Model.Task;
 import dev.kel3pbo.todolist.Repository.CategoryRepository;
+import dev.kel3pbo.todolist.Repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,8 @@ public class CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private TaskRepository taskRepository;
 
     // Mendapatkan semua kategori
     public List<Category> getAllCategories() {
@@ -31,9 +34,11 @@ public class CategoryService {
     }
 
     // Menambahkan task ke kategori
-    public Category addTaskToCategory(Long categoryId, Task task) {
+    public Category addTaskToCategory(Long categoryId, Long taskId) {
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
         category.addTask(task);
         return categoryRepository.save(category);
     }

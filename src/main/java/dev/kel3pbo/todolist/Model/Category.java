@@ -11,7 +11,6 @@ public class Category {
     private Long id;
     private String name;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "category_id")
     private List<Task> tasks = new ArrayList<>();
 
 
@@ -37,11 +36,12 @@ public class Category {
     // Add a task to the category
     public void addTask(Task task) {
         tasks.add(task);
+        task.setCategory(this);
     }
 
-    // Remove a task from the category
     public void removeTask(Task task) {
         tasks.remove(task);
+        task.setCategory(null);
     }
 
     // Get the list of tasks in the category

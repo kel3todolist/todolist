@@ -73,6 +73,10 @@ public class TaskService {
         return taskRepository.findByStatus_Name(status);
     }
 
+    public List<Task> getTasksWithoutCategory() {
+        return taskRepository.findByCategoryIsNull();
+    }
+
     // Mendapatkan task berdasarkan prioritas
     public List<Task> getTasksByPriority(String priority) {
         return taskRepository.findByPriority(priority);

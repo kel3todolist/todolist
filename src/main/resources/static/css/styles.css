@@ -304,6 +304,7 @@ body.dark .switch::before{
 }
 
 /* Style the popup buttons */
+
 .popup-edit,
 .popup-remove {
     display: block;
@@ -523,6 +524,7 @@ strong {
 }
 
 /* Style the popup buttons */
+.popup-addtask,
 .popup-edit,
 .popup-remove {
     display: block;
@@ -534,7 +536,7 @@ strong {
     margin-bottom: 8px;
     transition: background-color 0.3s;
 }
-
+.popup-addtask:hover,
 .popup-edit:hover,
 .popup-remove:hover {
     background-color: var(--primary-color);
@@ -542,6 +544,7 @@ strong {
 }
 
 /* Icon styling */
+.popup-addtask i,
 .popup-edit i,
 .popup-remove i {
     margin-right: 8px;

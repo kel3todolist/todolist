@@ -19,6 +19,9 @@ public class Task implements Notifiable {
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     private Status status;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = true) // nullable jika task bisa tanpa kategori
+    private Category category;
     public Task( String title, String description, String priority, LocalDate deadline) {
         this.title = title;
         this.description = description;
@@ -84,6 +87,14 @@ public class Task implements Notifiable {
     @Override
     public String sendNotification() {
         return "Task " + title + " is near deadline!" + " (" + deadline + ")";
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
 }
