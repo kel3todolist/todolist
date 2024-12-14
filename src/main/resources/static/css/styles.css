@@ -257,7 +257,7 @@ body.dark .switch::before{
     padding: 8px 40px;
 }
 /*===================================== DASHBORD BOX TASK ===========================================*/
-.containerdashboard {
+.container {
     position: relative;
     max-width: 100%;
     width: 100%;
@@ -479,11 +479,13 @@ strong {
 /*===================================== CATEGORY BOX ===========================================*/
 .containercategory {
     position: relative;
-    max-width: 100%;
+    max-width: 600px;
     width: 100%;
     padding: 8px 40px;
 }
-
+.containercategory .form {
+    margin-top: 5px;
+}
 .category-container {
     color: var(--text-color);
     display: flex;

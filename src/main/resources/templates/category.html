@@ -80,7 +80,7 @@
 
 <section class="home">
     <div class="text">Categories</div>
-    <div class="containercategory">
+    <div class="container">
         <div class="header-options">
             <a href="/category/create" class="btn-create-category">
                 <i class='bx bx-plus'></i> Create Category
@@ -99,7 +99,7 @@
                     <a th:href="@{/category/addtask/{id}(id=${category.id})}" class="popup-addtask" title="Add Task">
                         <i class='bx bx-add-to-queue'></i> Add Task
                     </a>
-                    <a th:href="@{/editcategory/{id}(id=${category.id})}" class="popup-edit" title="Edit">
+                    <a th:href="@{/category/edit/{id}(id=${category.id})}" class="popup-edit" title="Edit">
                         <i class='bx bx-edit'></i> Edit
                     </a>
                     <a th:href="@{/category/delete/{id}(id=${category.id})}" class="popup-remove" title="Remove">
