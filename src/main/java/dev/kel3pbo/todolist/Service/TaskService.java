@@ -19,12 +19,12 @@ public class TaskService {
     }
 
     // Menambahkan task baru
-    public Task addTask(Task task) {
-        return taskRepository.save(task);
+    public void addTask(Task task) {
+        taskRepository.save(task);
     }
 
     // Mengupdate task yang sudah ada
-    public Task updateTask(Long id, Task updatedTask) {
+    public void updateTask(Long id, Task updatedTask) {
         Optional<Task> existingTask = taskRepository.findById(id);
         if (existingTask.isPresent()) {
             Task task = existingTask.get();
@@ -33,7 +33,7 @@ public class TaskService {
             task.setPriority(updatedTask.getPriority());
             task.setDeadline(updatedTask.getDeadline());
             task.updateStatus(updatedTask.getStatus().getName());
-            return taskRepository.save(task);
+            taskRepository.save(task);
         } else {
             throw new RuntimeException("Task dengan ID " + id + " tidak ditemukan.");
         }
@@ -51,6 +51,15 @@ public class TaskService {
     // Menghapus task berdasarkan ID
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
+    }
+
+    public void removeTask(Long id) {
+        Optional<Task> optionalTask = taskRepository.findById(id);
+        if (optionalTask.isPresent()) {
+            Task task = optionalTask.get();
+            task.setCategory(null); // Update status di model
+            taskRepository.save(task);    // Simpan perubahan ke database
+        }
     }
 
 

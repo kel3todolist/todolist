@@ -98,7 +98,7 @@
 
                 <!-- Pop-up menu for edit and remove options -->
                 <div class="task-popup">
-                    <a th:href="@{/delete/{id}(id=${task.id})}" class="popup-remove" title="Remove">
+                    <a th:href="@{/remove/{id}(id=${task.id})}" class="popup-remove" title="Remove">
                         <i class='bx bx-folder-minus'></i> Remove Task
                     </a>
                     <a th:href="@{/edittask/{id}(id=${task.id})}" class="popup-edit" title="Edit">

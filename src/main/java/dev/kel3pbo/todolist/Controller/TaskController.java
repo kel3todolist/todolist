@@ -82,5 +82,10 @@ public class TaskController {
         return "redirect:/"; // Redirect ke dashboard setelah status diupdate
     }
 
+    @GetMapping("/remove/{id}")
+    public String removeTask(@PathVariable("id") Long id) {
+        taskService.removeTask(id);
+        return "redirect:/category"; // Redirect ke dashboard setelah delete
+    }
 
 }
