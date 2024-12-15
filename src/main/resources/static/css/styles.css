@@ -328,6 +328,38 @@ body.dark .switch::before{
 .popup-remove i {
     margin-right: 8px;
 }
+/*===================================== TIMELINE BOX - MIREEY ===================================== */
+.timeline-box{
+    border: 1px solid #fff;
+    background-color: #fff;
+    margin: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0px;
+    width: 1150px;
+}
+.timeline-content{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+.timeline-header{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+.timeline-desc{
+    margin-bottom: 10px;
+}
+.timeline-icon{
+    margin-right: 5px;
+}
+hr{
+   border: thin solid #DEE2E6;
+}
+
+
+
 
 /*===================================== DROPDOWN ===========================================*/
 /* Styling untuk dropdown */
