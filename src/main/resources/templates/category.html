@@ -80,13 +80,22 @@
 
 <section class="home">
     <div class="text">Categories</div>
-    <div class="container">
-        <div class="header-options">
-            <a href="/category/create" class="btn-create-category">
-                <i class='bx bx-plus'></i> Create Category
-            </a>
-        </div>
-        <div class="category-container">
+    <section class="containercategory">
+        <!-- Form untuk pembuatan kategori -->
+        <form action="/category/create" method="post" class="form category-form">
+            <div class="input-box">
+                <label>Create Category</label>
+                <input type="text" name="name" maxlength="50" placeholder="Enter Category Name" required />
+            </div>
+                <button type="submit">Create</button>
+        </form>
+    </section>
+    <div class="category-container">
+        <!-- Label untuk kategori -->
+        <label>List Category</label>
+
+        <!-- Wrapper untuk kategori -->
+        <div class="category-box-wrapper">
             <!-- Box untuk setiap kategori -->
             <div th:each="category : ${categories}" class="category-box">
                 <h3>
