@@ -671,3 +671,23 @@ h1 {
     font-size: 18px;
     color: #555;
 }
+
+/*======================tambahan pie chart statistik=============================*/ 
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+canvas#statChart {
+    max-width: 100%;
+    height: auto;
+}

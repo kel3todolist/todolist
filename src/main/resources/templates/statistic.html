@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" context="width=device-width, initial-scale=1.0">
@@ -98,9 +100,15 @@
             <p id="statData">Total Tasks: 0</p>
             <p id="statAdditional">Completed Tasks: 0 | On Progress: 0 | Not Started: 0</p>
         </div>
+
+        <div class="chart-container" style="max-width: 400px; margin: 0 auto;">
+            <canvas id="statChart"></canvas>
+        </div>
+        
     </div>    
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/statistics.js"></script>
 </body>
