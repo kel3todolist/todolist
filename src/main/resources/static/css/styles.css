@@ -612,6 +612,21 @@ strong {
     height: 50px;
 }
 
+.category-box-wrapper .category-box h3 a {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none; /* Hilangkan underline */
+    transition: var(--trans-04);
+    opacity: 1;
+}
+
+/* Link saat hover */
+.category-box-wrapper .category-box h3 a:hover {
+    color: var(--primary-color); /* Warna teks saat kursor di atas link */
+    text-decoration: none; /* Pastikan tetap tanpa underline saat hover */
+}
+
 /*=========================================================================================*/
 
 /* Ini tambahannya kris ya jangan diubah apa2 lagi please hiks */
