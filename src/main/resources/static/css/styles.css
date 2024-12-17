@@ -528,20 +528,6 @@ strong {
     margin-top: 5px;
 }
 
-.category-box-wrapper .category-box h3 a{
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text-color);
-    transition: var(--trans-04);
-    text-decoration: none; /* Hilangkan underline */
-    opacity: 1;
-}
-
-.category-box-wrapper .category-box h3 a:hover {
-    color: var(--primary-color); /* Warna teks saat kursor di atas link */
-    text-decoration: none; /* Tambahkan garis bawah jika diinginkan */
-}
-
 .category-box-wrapper {
     display: flex;
     flex-wrap: wrap;  /* Agar kategori membungkus ke baris baru jika tidak cukup tempat */
