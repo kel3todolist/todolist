@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,77 +14,93 @@
 
     <title>ToDoList</title>
 </head>
+
 <body>
-<nav class="sidebar">
-    <header>
-        <div class="image-text">
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
                 <span class="image">
                     <img src="/assets/logo.png" alt="logo">
                 </span>
 
-            <div class="text header-text">
-                <span class="name">ToDoList</span>
+                <div class="text header-text">
+                    <span class="name">ToDoList</span>
+                </div>
+
+            </div>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/createtask">
+                            <i class='bx bx-task icon'></i>
+                            <span class="text nav-text">Create Task</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/category">
+                            <i class='bx bx-category-alt icon'></i>
+                            <span class="text nav-text">Category</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/statistic">
+                            <i class='bx bx-stats icon'></i>
+                            <span class="text nav-text">Statistics</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-notification icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
 
+            <div class="bottom-content">
+                <li class="mode">
+                    <div class="moon-sun">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark Mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <div class="menu-bar">
-        <div class="menu">
-            <ul class="menu-links">
-                <li class="nav-link">
-                    <a href="/">
-                        <i class='bx bx-home-alt icon'></i>
-                        <span class="text nav-text">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-link">
-                    <a href="/createtask">
-                        <i class='bx bx-task icon'></i>
-                        <span class="text nav-text">Create Task</span>
-                    </a>
-                </li>
-                <li class="nav-link">
-                    <a href="/category">
-                        <i class='bx bx-category-alt icon'></i>
-                        <span class="text nav-text">Category</span>
-                    </a>
-                </li>
-                <li class="nav-link">
-                    <a href="/statistic">
-                        <i class='bx bx-stats icon'></i>
-                        <span class="text nav-text">Statistics</span>
-                    </a>
-                </li>
-                <li class="nav-link">
-                    <a href="#">
-                        <i class='bx bx-notification icon'></i>
-                        <span class="text nav-text">Notifications</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="bottom-content">
-            <li class="mode">
-                <div class="moon-sun">
-                    <i class='bx bx-moon icon moon'></i>
-                    <i class='bx bx-sun icon sun'></i>
+    <section class="home">
+        <div class="text">Notifications</div>
+        <div class="konten">
+            <div class="notification-box">
+                <div class="notification-icon">
+                    <i class='bx bx-bell bx-sm'></i>
                 </div>
-                <span class="mode-text text">Dark Mode</span>
-                <div class="toggle-switch">
-                    <span class="switch"></span>
+                <div class="notification-content">
+                    <div class="notification-title">
+                        <h4>Task</h4>
+                    </div>
+                    <div class="notification-desc">
+                        <p>description</p>
+                    </div>
                 </div>
-            </li>
+            </div>
         </div>
-    </div>
-</nav>
+    </section>
 
-<section class="home">
-    <div class="text">Notifications</div>
-    <div class="konten">text</div>
-</section>
-
-<script src="/js/script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
+
 </html>
