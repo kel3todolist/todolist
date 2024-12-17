@@ -660,10 +660,12 @@ h1 {
 }
 
 .filter-container select {
-    padding: 10px;
+    padding: 10px 15px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 .stat-card {
@@ -674,6 +676,7 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .stat-card h2 {
@@ -685,4 +688,45 @@ h1 {
 .stat-card p {
     font-size: 18px;
     color: #555;
+}
+/*======================tambahan pie chart statistik=============================*/
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+canvas#statChart {
+    max-width: 100%;
+    height: auto;
+}
+/* ===================================== NOTIFICATION  =========================================== */
+.notification-box{
+    border: 1px solid #fff;
+    background-color: #fff;
+    margin: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0px;
+    width: 1150px;
+    display: flex;
+    margin-left: 20px;
+    padding: 10px;
+}
+.notification-box:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid #DEE2E6;
+}
+.notification-icon{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 15px;
 }
