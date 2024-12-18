@@ -12,9 +12,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByStatus_Name(String statusName);
     List<Task> findByPriority(String priority);
     List<Task> findByCategoryIsNull();
-    List<Task> findByDescriptionOrderByDescription(String description)
-;    // List<Task> findAllByOrderByDeadlineAsc();
-   //List<Task>  findByDeadlineOrderByDeadlineASC(LocalDate deadline);
-
-
+    List<Task> findByDescriptionOrderByDescription(String description);   
+    List<Task> findAllByOrderByDeadlineAsc();
 }

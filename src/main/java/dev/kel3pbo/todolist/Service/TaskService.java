@@ -23,11 +23,11 @@ public class TaskService {
     public void addTask(Task task) {
         taskRepository.save(task);
     }
-//    // Mengembalikan semua task dengan pengurutan deadline ascending
-//     public List<Task> getAllTasksSortedByDeadline() {
-//         return taskRepository.findAllByOrderByDeadlineAsc();
-//     }
-    
+
+    // Ambil semua task berdasarkan deadline ascending
+    public List<Task> getAllTasksSortedByDeadline() {
+        return taskRepository.findAllByOrderByDeadlineAsc();
+    }
 
     // Mengupdate task yang sudah ada
     public void updateTask(Long id, Task updatedTask) {

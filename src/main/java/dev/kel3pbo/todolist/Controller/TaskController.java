@@ -39,13 +39,18 @@ public class TaskController {
         return "redirect:/"; // Redirect ke halaman daftar task
     }
 
-    // Menampilkan daftar semua task
+    // // Menampilkan daftar semua task
+    // @GetMapping
+    // public String listAllTasks(Model model) {
+    //     model.addAttribute("tasks", taskService.getAllTasks());
+    //     return "dashboard"; // Template untuk menampilkan semua task
+    // }
     @GetMapping
     public String listAllTasks(Model model) {
-        model.addAttribute("tasks", taskService.getAllTasks());
-        return "dashboard"; // Template untuk menampilkan semua task
+        // Mengambil task terurut berdasarkan deadline
+        model.addAttribute("tasks", taskService.getAllTasksSortedByDeadline());
+        return "dashboard"; // Template untuk menampilkan task dalam urutan timeline
     }
-
     @GetMapping("/statistic")
     public String showStatistic() {
         return "statistic"; // Mengarahkan ke template statistic.html
