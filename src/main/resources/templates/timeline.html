@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ========== CSS ========== -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- ========== ICON ========== -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <title>ToDoList - Dashboard</title>
+</head>
+<body>
+<nav class="sidebar">
+  <header>
+    <div class="image-text">
+                <span class="image">
+                    <img src="/assets/logo.png" alt="logo">
+                </span>
+      <div class="text header-text">
+        <span class="name">ToDoList</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-bar">
+    <div class="menu">
+      <ul class="menu-links">
+        <li class="nav-link">
+          <a href="/">
+            <i class='bx bx-home-alt icon'></i>
+            <span class="text nav-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a href="/createtask">
+            <i class='bx bx-task icon'></i>
+            <span class="text nav-text">Create Task</span>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a href="/category">
+            <i class='bx bx-category-alt icon'></i>
+            <span class="text nav-text">Category</span>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a href="/statistic">
+            <i class='bx bx-stats icon'></i>
+            <span class="text nav-text">Statistics</span>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a href="/notification">
+            <i class='bx bx-notification icon'></i>
+            <span class="text nav-text">Notifications</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bottom-content">
+      <li class="mode">
+        <div class="moon-sun">
+          <i class='bx bx-moon icon moon'></i>
+          <i class='bx bx-sun icon sun'></i>
+        </div>
+        <span class="mode-text text">Dark Mode</span>
+        <div class="toggle-switch">
+          <span class="switch"></span>
+        </div>
+      </li>
+    </div>
+  </div>
+</nav>
+
+<section class="home">
+  <div class="text">Timeline</div>
+  <div class="container">
+    <a href="/" class="btn btn-primary">Back to Dashboard</a>
+    <div class="timeline-container">
+
+      <div th:each="entry : ${tasksByDate}">
+        <div class="timeline-date">
+          <h4 th:text="${#temporals.format(entry.key, 'EEEE, dd MMMM yyyy')}">Date</h4>
+        </div>
+        <div class="timeline-box" th:each="task : ${entry.value}">
+          <div class="timeline-header">
+            <h4 th:text="${task.title}">Task Title</h4>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-icon">
+              <i class='bx bx-checkbox bx-sm'></i>
+            </div>
+            <div class="timeline-task">
+              <div class="timeline-taskname">
+                <p th:text="${task.description}">Description</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/js/script.js"></script>
+</body>
+</html>

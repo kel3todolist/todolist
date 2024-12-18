@@ -81,30 +81,7 @@
 <section class="home">
     <div class="text">Dashboard</div>
     <div class="container">
-        <div class="timeline-container">
-            <h3>Timeline</h3>
-            
-            <div th:each="task : ${tasks}" class="timeline-box">
-                <div  class="timeline-header">
-                    <h4 th:text="${task.deadline}">Tuesday, 19 Desember 2024</h4>
-                </div>
-                
-                <div class="timeline-content">
-                    <div class="timeline-icon">
-                        <i class='bx bx-checkbox bx-sm'></i>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="timeline-taskname">
-                            <h4 th:text="${task.title}">Title</h4>
-                        </div>
-                        <div class="timeline-desc">
-                            <p th:text="${task.description}">description</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <a href="/timeline" class="btn btn-primary">See Timeline</a>
         <div class="task-container">
             <!-- Box untuk setiap task -->
             <div th:each="task : ${tasks}" class="task-box">

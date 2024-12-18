@@ -45,6 +45,13 @@ public class TaskController {
     //     model.addAttribute("tasks", taskService.getAllTasks());
     //     return "dashboard"; // Template untuk menampilkan semua task
     // }
+    // Route untuk halaman timeline
+    @GetMapping("/timeline")
+    public String showTimeline(Model model) {
+        model.addAttribute("tasksByDate", taskService.getTasksGroupedByDate());
+        return "timeline"; // Template untuk halaman timeline
+    }
+
     @GetMapping
     public String listAllTasks(Model model) {
         // Mengambil task terurut berdasarkan deadline

@@ -3,7 +3,8 @@ package dev.kel3pbo.todolist.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -92,7 +93,11 @@ public class TaskService {
     public List<Task> getTasksWithoutCategory() {
         return taskRepository.findByCategoryIsNull();
     }
-
+    public Map<LocalDate, List<Task>> getTasksGroupedByDate() {
+        List<Task> tasks = getAllTasksSortedByDeadline();
+        return tasks.stream()
+                .collect(Collectors.groupingBy(Task::getDeadline));
+    }
     // Mendapatkan task berdasarkan prioritas
     public List<Task> getTasksByPriority(String priority) {
         return taskRepository.findByPriority(priority);

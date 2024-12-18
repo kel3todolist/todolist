@@ -257,6 +257,26 @@ body.dark .switch::before{
     padding: 8px 40px;
 }
 /*===================================== DASHBORD BOX TASK ===========================================*/
+.btn {
+    display: inline-block;
+    padding: 10px 10px;
+    height: 40px;
+    width: auto;
+    background: #FF7D0A;
+    color: white;
+    align-content: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+}
 .container {
     position: relative;
     max-width: 100%;
@@ -331,12 +351,22 @@ body.dark .switch::before{
 /*===================================== TIMELINE BOX - MIREEY ===================================== */
 .timeline-box{
     border: 1px solid #fff;
-    background-color: #fff;
+    background-color: var(--primary-color-light);
     margin: 5px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 0px;
     width: 1150px;
+}
+.timeline-date {
+    margin: 20px 0; /* Memberikan spasi atas dan bawah */
+    text-transform: uppercase; /* Membuat teks kapital */
+    font-size: 20px;
+
+
+}
+.timeline-container{
+    color : var(--text-color);
 }
 .timeline-content{
     display: flex;
