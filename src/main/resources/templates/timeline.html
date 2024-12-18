@@ -83,22 +83,36 @@
   <div class="container">
     <a href="/" class="btn btn-primary">Back to Dashboard</a>
     <div class="timeline-container">
-
       <div th:each="entry : ${tasksByDate}">
         <div class="timeline-date">
           <h4 th:text="${#temporals.format(entry.key, 'EEEE, dd MMMM yyyy')}">Date</h4>
         </div>
         <div class="timeline-box" th:each="task : ${entry.value}">
           <div class="timeline-header">
-            <h4 th:text="${task.title}">Task Title</h4>
+            <h4>
+              <span th:text="${task.title}">Task Title</span>
+              <span th:text="' • ' + ${task.priority}"
+                    th:classappend="${task.priority == 'High' ? 'high-priority' : (task.priority == 'Medium' ? 'medium-priority' : 'low-priority')}">
+              </span>
+            </h4>
           </div>
           <div class="timeline-content">
-            <div class="timeline-icon">
-              <i class='bx bx-checkbox bx-sm'></i>
-            </div>
             <div class="timeline-task">
               <div class="timeline-taskname">
                 <p th:text="${task.description}">Description</p>
+              </div>
+              <div class="status-form">
+                <div class="status-form">
+                  <form th:action="@{/update-status/{id}(id=${task.id})}" method="post">
+                    <label>
+                      <select name="status" onchange="this.form.submit()">
+                        <option th:value="NOT_STARTED" th:selected="${task.status.name == 'NOT_STARTED'}">Not Started</option>
+                        <option th:value="ON_PROGRESS" th:selected="${task.status.name == 'ON_PROGRESS'}">On Progress</option>
+                        <option th:value="COMPLETED" th:selected="${task.status.name == 'COMPLETED'}">Completed</option>
+                      </select>
+                    </label>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

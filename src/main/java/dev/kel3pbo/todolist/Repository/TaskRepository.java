@@ -14,4 +14,5 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByCategoryIsNull();
     List<Task> findByDescriptionOrderByDescription(String description);   
     List<Task> findAllByOrderByDeadlineAsc();
+    List<Task> findAllByOrderByDeadlineDesc();
 }

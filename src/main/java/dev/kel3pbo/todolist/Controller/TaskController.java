@@ -1,5 +1,6 @@
 package dev.kel3pbo.todolist.Controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +49,13 @@ public class TaskController {
     // Route untuk halaman timeline
     @GetMapping("/timeline")
     public String showTimeline(Model model) {
+        List<Task> tasks = taskService.getAllTasksSortedByDeadline();
+
+        // Debugging: periksa urutan tugas berdasarkan deadline
+        tasks.forEach(task -> System.out.println(task.getDeadline()));
+
         model.addAttribute("tasksByDate", taskService.getTasksGroupedByDate());
-        return "timeline"; // Template untuk halaman timeline
+        return "timeline";
     }
 
     @GetMapping

@@ -387,14 +387,39 @@ body.dark .switch::before{
 .timeline-container{
     color : var(--text-color);
 }
-.timeline-content{
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    margin-left: 10px;
-}
 .timeline-header{
     margin : 10px;
+    font-size: 17px;
 }
+.timeline-content {
+    display: flex;               /* Membuat konten dalam satu kolom */
+    flex-direction: column;      /* Menyusun elemen secara vertikal */
+    justify-content: flex-start; /* Menjaga elemen di bagian atas */
+    position: relative;
+    margin-left: 10px;
+}
+.timeline-header .high-priority {
+    color: #A02334; /* Merah untuk High */
+}
+
+.timeline-header .medium-priority {
+    color: #FFAD60; /* Kuning untuk Medium */
+}
+
+.timeline-header .low-priority {
+    color: #96CEB4; /* Hijau muda untuk Low */
+}
+.status-form {
+    position: absolute;          /* Menempatkan form pada posisi absolut */
+    bottom: 10px;                /* Menempatkan form di bagian bawah box */
+    right: 10px;                 /* Menempatkan form di bagian kanan box */
+}
+
+.timeline-taskname p {
+    margin-bottom: 10px;
+}
+
+
 .timeline-desc{
     margin-bottom: 10px;
 }

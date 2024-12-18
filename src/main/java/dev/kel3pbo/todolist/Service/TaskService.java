@@ -1,6 +1,9 @@
 package dev.kel3pbo.todolist.Service;
 
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Map;
@@ -28,6 +31,9 @@ public class TaskService {
     // Ambil semua task berdasarkan deadline ascending
     public List<Task> getAllTasksSortedByDeadline() {
         return taskRepository.findAllByOrderByDeadlineAsc();
+    }
+    public List<Task> getAllTasksSortedByDeadlineDesc() {
+        return taskRepository.findAllByOrderByDeadlineDesc();
     }
 
     // Mengupdate task yang sudah ada
@@ -94,10 +100,15 @@ public class TaskService {
         return taskRepository.findByCategoryIsNull();
     }
     public Map<LocalDate, List<Task>> getTasksGroupedByDate() {
-        List<Task> tasks = getAllTasksSortedByDeadline();
+        List<Task> tasks = getAllTasksSortedByDeadline(); // Ambil tugas yang sudah terurut
         return tasks.stream()
-                .collect(Collectors.groupingBy(Task::getDeadline));
+                .collect(Collectors.groupingBy(
+                        Task::getDeadline,
+                        LinkedHashMap::new, // Pastikan urutan tetap terjaga
+                        Collectors.toList()
+                ));
     }
+
     // Mendapatkan task berdasarkan prioritas
     public List<Task> getTasksByPriority(String priority) {
         return taskRepository.findByPriority(priority);
