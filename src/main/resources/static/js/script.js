@@ -21,3 +21,20 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const tasks = document.querySelectorAll(".task-box");
+
+    tasks.forEach(task => {
+        const priorityText = task.querySelector("p").textContent.toLowerCase(); // Ambil teks kategori
+
+        if (priorityText.includes("low")) {
+            task.classList.add("low");
+        } else if (priorityText.includes("medium")) {
+            task.classList.add("medium");
+        } else if (priorityText.includes("high")) {
+            task.classList.add("high");
+        }
+    });
+});
+
