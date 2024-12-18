@@ -37,4 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+// Mendapatkan elemen input tanggal
+const dateInput = document.getElementById('date');
+
+// Fungsi untuk mengatur tanggal minimum ke tanggal saat ini
+const setMinDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2); // Format bulan menjadi dua digit
+    const day = ('0' + today.getDate()).slice(-2); // Format tanggal menjadi dua digit
+    dateInput.setAttribute('min', `${year}-${month}-${day}`); // Set atribut min ke tanggal saat ini
+};
+
+// Panggil fungsi setMinDate saat halaman dimuat
+window.onload = setMinDate;
 
