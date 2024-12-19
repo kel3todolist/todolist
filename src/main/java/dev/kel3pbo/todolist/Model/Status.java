@@ -18,7 +18,7 @@ public class Status {
     }
 
     public Status() {
-        this.name = "Not Started";
+        this.name = "NOT_STARTED";
         this.lastUpdated = new Date();
     }
 

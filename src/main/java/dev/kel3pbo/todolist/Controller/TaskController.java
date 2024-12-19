@@ -64,10 +64,6 @@ public class TaskController {
         model.addAttribute("tasks", taskService.getAllTasksSortedByDeadline());
         return "dashboard"; // Template untuk menampilkan task dalam urutan timeline
     }
-    @GetMapping("/statistic")
-    public String showStatistic() {
-        return "statistic"; // Mengarahkan ke template statistic.html
-    }
 
     @GetMapping("/notification")
     public String showNotification() {

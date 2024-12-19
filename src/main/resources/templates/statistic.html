@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -84,28 +84,28 @@
 <section class="home">
     <div class="text">Statistics Overview</div>
     <div class="workspace">
-        <!-- Dropdown Filter -->
         <div class="filter-container">
             <label for="statFilter">Select Statistic:</label>
-            <select id="statFilter" onchange="updateStatistic()">
-                <option value="daily">Daily Statistic</option>
-                <option value="weekly">Weekly Statistic</option>
-                <option value="monthly">Monthly Statistic</option>
+            <select id="statFilter" onchange="loadStatistics(this.value)">
+                <option value="daily" th:selected="${type == 'daily'}">Daily Statistic</option>
+                <option value="weekly" th:selected="${type == 'weekly'}">Weekly Statistic</option>
+                <option value="monthly" th:selected="${type == 'monthly'}">Monthly Statistic</option>
             </select>
         </div>
-    
-        <!-- Card Utama -->
         <div class="stat-card">
-            <h2 id="statTitle">Daily Statistic</h2>
-            <p id="statData">Total Tasks: 0</p>
-            <p id="statAdditional">Completed Tasks: 0 | On Progress: 0 | Not Started: 0</p>
+            <h2 id="statTitle" th:text="${statTitle}">Statistics</h2>
+            <p id="statTotal" th:text="'Total Tasks: ' + ${stat.totalTask}">Total Tasks: 0</p>
+            <p id="statDetails" th:text="'Completed Tasks: ' + ${stat.completedTask} + ' | On Progress: ' + ${stat.onProgressTask} + ' | Not Started: ' + ${stat.notStartedTask}">
+                Completed Tasks: 0 | On Progress: 0 | Not Started: 0
+            </p>
+            <p id="completionRate" th:text="'Completion Rate: ' + ${#numbers.formatDecimal(stat.calculateCompletionRate(), 1, 2)} + '%'">
+                Completion Rate: 0%
+            </p>
         </div>
-        
         <div class="chart-container" style="max-width: 400px; margin: 0 auto;">
             <canvas id="statChart"></canvas>
         </div>
-        
-    </div>    
+    </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
