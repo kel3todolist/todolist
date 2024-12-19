@@ -14,6 +14,7 @@ function loadStatistics(type) {
 
 function updateStatisticDisplay(data) {
     document.getElementById("statTitle").textContent = data.title;
+    document.getElementById("dateRange").textContent = data.dateRange;
     document.getElementById("statTotal").textContent = `Total Tasks: ${data.total}`;
     document.getElementById("statDetails").textContent =
         `Completed Tasks: ${data.completed} | On Progress: ${data.onProgress} | Not Started: ${data.notStarted}`;

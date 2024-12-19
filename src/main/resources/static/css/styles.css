@@ -761,6 +761,13 @@ h1 {
     font-size: 18px;
     color: #555;
 }
+.date-range {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
 /*======================tambahan pie chart statistik=============================*/
 .chart-container {
     display: flex;

@@ -94,6 +94,11 @@
         </div>
         <div class="stat-card">
             <h2 id="statTitle" th:text="${statTitle}">Statistics</h2>
+            <p id="dateRange" class="date-range" th:switch="${type}">
+                <span th:case="'daily'" th:text="${#temporals.format(stat.date, 'dd MMMM yyyy')}"></span>
+                <span th:case="'weekly'" th:text="${#temporals.format(stat.startOfWeek, 'dd MMMM yyyy')} + ' - ' + ${#temporals.format(stat.endOfWeek, 'dd MMMM yyyy')}"></span>
+                <span th:case="'monthly'" th:text="${#temporals.format(stat.startOfMonth, 'dd MMMM yyyy')} + ' - ' + ${#temporals.format(stat.endOfMonth, 'dd MMMM yyyy')}"></span>
+            </p>
             <p id="statTotal" th:text="'Total Tasks: ' + ${stat.totalTask}">Total Tasks: 0</p>
             <p id="statDetails" th:text="'Completed Tasks: ' + ${stat.completedTask} + ' | On Progress: ' + ${stat.onProgressTask} + ' | Not Started: ' + ${stat.notStartedTask}">
                 Completed Tasks: 0 | On Progress: 0 | Not Started: 0
