@@ -48,7 +48,7 @@ function updatePieChart(data) {
                     labels: {
                         color: fontColor, // Ubah warna teks legend
                         font: {
-                            size: 14 // Ukuran teks (opsional)
+                            size: 20 // Ukuran teks (opsional)
                         }
                     },
                     position: 'top'
