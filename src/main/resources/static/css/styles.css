@@ -727,10 +727,28 @@ body .statistic{
 }
 
 .workspace {
+    display: flex; /* Menjadikan elemen anak sejajar horizontal */
+    flex-direction: column;
+    justify-content: center; /* Memberi jarak antar elemen */
+    align-items: center; /* Sejajarkan elemen di bagian atas */
     padding: 20px;
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
+    gap: 20px; /* Memberi jarak antar elemen */
+    width: 100%; /* Memastikan elemen mengambil seluruh lebar */
+    max-width: none; /* Menghapus batas lebar */
+    text-align: left; /* Ubah teks elemen menjadi rata kiri */
+    transform: translateX(-130px);
+}
+
+.statistics-section {
+    display: flex;
+    flex-direction: space-between; /* Sejajarkan elemen secara horizontal */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc; /* Border untuk card */
+    border-radius: 20px; /* Membuat sudut border melengkung */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan efek bayangan */
+    background-color: var(--primary-color-light);
 }
 
 h1 {
@@ -741,6 +759,7 @@ h1 {
 
 .filter-container {
     margin-bottom: 20px;
+    transform: translateX(-10px);
     color: var(--text-color);
 }
 
@@ -756,12 +775,10 @@ h1 {
 }
 
 .stat-card {
+    flex: 1;
+    margin-right: 20px;
     background-color: var(--primary-color-light);
-    border: 1px solid #ddd;
-    border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -786,6 +803,7 @@ h1 {
 }
 /*======================tambahan pie chart statistik=============================*/
 .chart-container {
+    flex: 1;
     background-color: var(--primary-color-light);
     font-family: "Poppins", sans-serif;
     display: flex;
@@ -796,8 +814,6 @@ h1 {
     margin: 20px auto;
     text-align: center;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .chart-container #statChart {
     color: var(--text-color);
