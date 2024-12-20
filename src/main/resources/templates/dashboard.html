@@ -89,7 +89,7 @@
                 <p th:text="${task.description}">Task Description</p>
                 <p><strong>Status:</strong>
                 <form th:action="@{/update-status/{id}(id=${task.id})}" method="post">
-                    <select name="status" onchange="this.form.submit()">
+                    <select name="status" class="status" onchange="this.form.submit()">
                         <option th:value="NOT_STARTED" th:selected="${task.status.name == 'NOT_STARTED'}">Not Started</option>
                         <option th:value="ON_PROGRESS" th:selected="${task.status.name == 'ON_PROGRESS'}">On Progress</option>
                         <option th:value="COMPLETED" th:selected="${task.status.name == 'COMPLETED'}">Completed</option>

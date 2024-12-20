@@ -25,6 +25,9 @@ function updateStatisticDisplay(data) {
 function updatePieChart(data) {
     const ctx = document.getElementById("statChart").getContext("2d");
 
+    // Ambil nilai warna dari CSS
+    const fontColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+
     if (statChart) {
         statChart.destroy();
     }
@@ -42,12 +45,25 @@ function updatePieChart(data) {
             responsive: true,
             plugins: {
                 legend: {
+                    labels: {
+                        color: fontColor, // Ubah warna teks legend
+                        font: {
+                            size: 14 // Ukuran teks (opsional)
+                        }
+                    },
                     position: 'top'
+                },
+                tooltip: {
+                    titleColor: fontColor, // Ubah warna teks judul tooltip
+                    bodyColor: fontColor, // Ubah warna teks isi tooltip
                 }
             }
         }
     });
 }
+
+
+
 
 // Initialize statistics on page load
 document.addEventListener("DOMContentLoaded", () => {
