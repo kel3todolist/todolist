@@ -732,7 +732,7 @@ body .statistic{
     justify-content: center; /* Memberi jarak antar elemen */
     align-items: center; /* Sejajarkan elemen di bagian atas */
     padding: 20px;
-    gap: 20px; /* Memberi jarak antar elemen */
+    gap: 60px; /* Memberi jarak antar elemen */
     width: 100%; /* Memastikan elemen mengambil seluruh lebar */
     max-width: none; /* Menghapus batas lebar */
     text-align: left; /* Ubah teks elemen menjadi rata kiri */
@@ -759,7 +759,7 @@ h1 {
 
 .filter-container {
     margin-bottom: 20px;
-    transform: translateX(-30px);
+    transform: translateX(-524px);
     color: var(--text-color);
 }
 
