@@ -6,9 +6,8 @@ import dev.kel3pbo.todolist.Repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,7 +21,7 @@ public class NotificationService {
         this.taskService = taskService;
     }
 
-    public void createNotification(Task task, String message, LocalDateTime createdAt) {
+    public void createNotification(Task task, String message, LocalDate createdDate) {
         // Check if notification already exists for this task
         List<Notification> existingNotifications = notificationRepository.findAllByOrderByCreatedAtDesc();
         boolean notificationExists = existingNotifications.stream()
@@ -30,18 +29,19 @@ public class NotificationService {
 
         if (!notificationExists) {
             Notification notification = new Notification(message, task);
-            notification.setCreatedAt(createdAt); // Set the calculated creation time
+            // Convert LocalDate to LocalDateTime dengan waktu 00:00
+            notification.setCreatedAt(createdDate.atStartOfDay());
             notificationRepository.save(notification);
         }
     }
 
     public List<Notification> getUnreadNotifications() {
-        generateNotifications(); // Generate notifications before returning
+        generateNotifications();
         return notificationRepository.findByIsReadFalse();
     }
 
     public List<Notification> getAllNotifications() {
-        generateNotifications(); // Generate notifications before returning
+        generateNotifications();
         return notificationRepository.findAllByOrderByCreatedAtDesc();
     }
 
@@ -50,12 +50,9 @@ public class NotificationService {
 
         for (Task task : allTasks) {
             if (task.isNearDeadline() && !task.getStatus().getName().equals("COMPLETED")) {
-                // Calculate creation time as 3 days before deadline at 9:00 AM
-                LocalDateTime createdAt = task.getDeadline()
-                        .minusDays(3)
-                        .atTime(LocalTime.of(9, 0)); // Set to 9:00 AM
-
-                createNotification(task, task.sendNotification(), createdAt);
+                // Set tanggal 3 hari sebelum deadline
+                LocalDate createdDate = task.getDeadline().minusDays(3);
+                createNotification(task, task.sendNotification(), createdDate);
             }
         }
     }

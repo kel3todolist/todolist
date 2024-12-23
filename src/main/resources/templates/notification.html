@@ -84,19 +84,22 @@
     <section class="home">
         <div class="text">Notifications</div>
         <div class="konten">
-            <!-- Mark all as read button -->
-            <div class="notification-actions" th:if="${not #lists.isEmpty(notifications)}">
+            <!-- Tombol Mark all as read -->
+            <div class="notification-actions"
+                 th:if="${not #lists.isEmpty(notifications) and notifications.?[!read].size() > 0}">
                 <form th:action="@{/notification/mark-all-read}" method="post">
                     <button type="submit" class="mark-all-read">Mark All as Read</button>
                 </form>
             </div>
 
-            <!-- Notifications list -->
-            <div th:if="${#lists.isEmpty(notifications)}" class="no-notifications">
+            <!-- Daftar notifikasi -->
+            <div th:if="${#lists.isEmpty(notifications) or notifications.?[!read].size() == 0}"
+                 class="no-notifications">
                 <p>No notifications</p>
             </div>
 
-            <div th:each="notification : ${notifications}" class="notification-box"
+            <div th:each="notification : ${notifications}"
+                 class="notification-box"
                  th:classappend="${notification.read ? 'read' : 'unread'}"
                  th:if="${!notification.read}">
                 <div class="notification-icon">
@@ -106,17 +109,15 @@
                     <div class="notification-title">
                         <h4 th:text="${notification.task.title}">Task Title</h4>
                         <span class="notification-time"
-                              th:text="${#temporals.format(notification.createdAt, 'dd MMM yyyy HH:mm')}">
-            Time
-        </span>
+                              th:text="${#temporals.format(notification.createdAt, 'dd MMM yyyy')}">
+                Time
+            </span>
                     </div>
                     <div class="notification-desc">
                         <p th:text="${notification.message}">description</p>
                     </div>
                 </div>
-                <!-- Mark single notification as read -->
-                <form th:if="${!notification.read}"
-                      th:action="@{/notification/mark-read/{id}(id=${notification.id})}"
+                <form th:action="@{/notification/mark-read/{id}(id=${notification.id})}"
                       method="post" class="mark-read-form">
                     <button type="submit" class="mark-read">Mark as Read</button>
                 </form>
