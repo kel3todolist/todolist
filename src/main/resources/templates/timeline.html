@@ -128,6 +128,7 @@
             </a>
           </div>
           <div class="status-form">
+            <form th:action="@{/update-status/{id}(id=${task.id}, showCompleted=${showCompleted})}" method="post">
               <label>
                 <select name="status" class="status" onchange="this.form.submit()">
                   <option th:value="NOT_STARTED" th:selected="${task.status.name == 'NOT_STARTED'}">Not Started</option>

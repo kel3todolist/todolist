@@ -87,7 +87,7 @@ public class TaskController {
                                    @RequestParam("status") String statusName,
                                    @RequestParam(value = "showCompleted", required = false, defaultValue = "false") boolean showCompleted) {
         taskService.updateStatus(id, statusName);
-        return "redirect:/timeline?showCompleted=" + showCompleted;
+        return "redirect:/?showCompleted=" + showCompleted;
     }
 
     @GetMapping("/remove/{id}")
