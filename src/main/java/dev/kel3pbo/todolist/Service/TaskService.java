@@ -99,6 +99,17 @@ public class TaskService {
     public List<Task> getTasksWithoutCategory() {
         return taskRepository.findByCategoryIsNull();
     }
+    private static final Comparator<Task> PRIORITY_COMPARATOR = (task1, task2) -> {
+        // Define priority order: High -> Medium -> Low
+        Map<String, Integer> priorityOrder = Map.of(
+                "High", 1,
+                "Medium", 2,
+                "Low", 3
+        );
+
+        return priorityOrder.get(task1.getPriority()) - priorityOrder.get(task2.getPriority());
+    };
+
     public Map<LocalDate, List<Task>> getTasksGroupedByDate(boolean showCompleted) {
         List<Task> tasks;
         if (showCompleted) {
@@ -113,7 +124,12 @@ public class TaskService {
                 .collect(Collectors.groupingBy(
                         Task::getDeadline,
                         LinkedHashMap::new,
-                        Collectors.toList()
+                        Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                list -> list.stream()
+                                        .sorted(PRIORITY_COMPARATOR)
+                                        .collect(Collectors.toList())
+                        )
                 ));
     }
     // Add new method to get non-completed tasks
