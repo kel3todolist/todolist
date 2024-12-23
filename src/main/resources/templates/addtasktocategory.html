@@ -89,7 +89,7 @@
                 <p th:text="${task.description}">Task Description</p>
                 <form th:action="@{/category/addtask/{categoryId}(categoryId=${categoryId})}" method="post">
                     <input type="hidden" name="taskId" th:value="${task.id}">
-                    <button type="submit" class="btn-add-to-category">Add to Category</button>
+                    <button type="submit" >Add to Category</button>
                 </form>
             </div>
         </div>
