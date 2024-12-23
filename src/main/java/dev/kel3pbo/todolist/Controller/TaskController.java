@@ -62,10 +62,6 @@ public class TaskController {
         return "dashboard"; // Template untuk menampilkan task dalam urutan timeline
     }
 
-    @GetMapping("/notification")
-    public String showNotification() {
-        return "notification"; // Mengarahkan ke template notification.html
-    }
     
     // Menghapus task berdasarkan ID
     @GetMapping("/delete/{id}")
