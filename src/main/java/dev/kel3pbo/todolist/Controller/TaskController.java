@@ -48,13 +48,10 @@ public class TaskController {
     // }
     // Route untuk halaman timeline
     @GetMapping("/timeline")
-    public String showTimeline(Model model) {
-        List<Task> tasks = taskService.getAllTasksSortedByDeadline();
-
-        // Debugging: periksa urutan tugas berdasarkan deadline
-        tasks.forEach(task -> System.out.println(task.getDeadline()));
-
-        model.addAttribute("tasksByDate", taskService.getTasksGroupedByDate());
+    public String showTimeline(@RequestParam(name = "showCompleted", required = false, defaultValue = "false") boolean showCompleted,
+                               Model model) {
+        model.addAttribute("tasksByDate", taskService.getTasksGroupedByDate(showCompleted));
+        model.addAttribute("showCompleted", showCompleted); // Add this to maintain state in view
         return "timeline";
     }
 
@@ -97,9 +94,11 @@ public class TaskController {
     }
     // Mengupdate status task
     @PostMapping("/update-status/{id}")
-    public String updateTaskStatus(@PathVariable("id") Long id, @RequestParam("status") String statusName) {
+    public String updateTaskStatus(@PathVariable("id") Long id,
+                                   @RequestParam("status") String statusName,
+                                   @RequestParam(value = "showCompleted", required = false, defaultValue = "false") boolean showCompleted) {
         taskService.updateStatus(id, statusName);
-        return "redirect:/"; // Redirect ke dashboard setelah status diupdate
+        return "redirect:/timeline?showCompleted=" + showCompleted;
     }
 
     @GetMapping("/remove/{id}")

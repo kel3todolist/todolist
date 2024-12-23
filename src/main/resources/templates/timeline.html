@@ -81,7 +81,21 @@
 <section class="home">
   <div class="text">Timeline</div>
   <div class="container">
-    <a href="/" class="btn btn-primary">Back to Dashboard</a>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">Back to Dashboard</a>
+      <div class="view-options">
+        <a th:href="@{/timeline(showCompleted=false)}"
+           class="btn"
+           th:classappend="${!showCompleted ? 'btn-active' : ''}">
+          Active Tasks
+        </a>
+        <a th:href="@{/timeline(showCompleted=true)}"
+           class="btn"
+           th:classappend="${showCompleted ? 'btn-active' : ''}">
+          All Tasks
+        </a>
+      </div>
+    </div>
     <div class="timeline-container">
       <div th:each="entry : ${tasksByDate}">
         <div class="timeline-date">
@@ -102,17 +116,15 @@
                 <p th:text="${task.description}">Description</p>
               </div>
               <div class="status-form">
-                <div class="status-form">
-                  <form th:action="@{/update-status/{id}(id=${task.id})}" method="post">
-                    <label>
-                      <select name="status" class="status" onchange="this.form.submit()">
-                        <option th:value="NOT_STARTED" th:selected="${task.status.name == 'NOT_STARTED'}">Not Started</option>
-                        <option th:value="ON_PROGRESS" th:selected="${task.status.name == 'ON_PROGRESS'}">On Progress</option>
-                        <option th:value="COMPLETED" th:selected="${task.status.name == 'COMPLETED'}">Completed</option>
-                      </select>
-                    </label>
-                  </form>
-                </div>
+                <form th:action="@{/update-status/{id}(id=${task.id}, showCompleted=${showCompleted})}" method="post">
+                  <label>
+                    <select name="status" class="status" onchange="this.form.submit()">
+                      <option th:value="NOT_STARTED" th:selected="${task.status.name == 'NOT_STARTED'}">Not Started</option>
+                      <option th:value="ON_PROGRESS" th:selected="${task.status.name == 'ON_PROGRESS'}">On Progress</option>
+                      <option th:value="COMPLETED" th:selected="${task.status.name == 'COMPLETED'}">Completed</option>
+                    </select>
+                  </label>
+                </form>
               </div>
             </div>
           </div>

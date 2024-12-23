@@ -99,14 +99,32 @@ public class TaskService {
     public List<Task> getTasksWithoutCategory() {
         return taskRepository.findByCategoryIsNull();
     }
-    public Map<LocalDate, List<Task>> getTasksGroupedByDate() {
-        List<Task> tasks = getAllTasksSortedByDeadline(); // Ambil tugas yang sudah terurut
+    public Map<LocalDate, List<Task>> getTasksGroupedByDate(boolean showCompleted) {
+        List<Task> tasks;
+        if (showCompleted) {
+            tasks = getAllTasksSortedByDeadline();
+        } else {
+            tasks = getNonCompletedTasks().stream()
+                    .sorted(Comparator.comparing(Task::getDeadline))
+                    .collect(Collectors.toList());
+        }
+
         return tasks.stream()
                 .collect(Collectors.groupingBy(
                         Task::getDeadline,
-                        LinkedHashMap::new, // Pastikan urutan tetap terjaga
+                        LinkedHashMap::new,
                         Collectors.toList()
                 ));
+    }
+    // Add new method to get non-completed tasks
+    public List<Task> getNonCompletedTasks() {
+        return taskRepository.findByStatus_NameNot("COMPLETED");
+    }
+
+
+    // Add new method to get completed tasks
+    public List<Task> getCompletedTasks() {
+        return taskRepository.findByStatus_Name("COMPLETED");
     }
 
     // Mendapatkan task berdasarkan prioritas
