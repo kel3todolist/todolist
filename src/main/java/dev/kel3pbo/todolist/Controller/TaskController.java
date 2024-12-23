@@ -47,19 +47,12 @@ public class TaskController {
     //     return "dashboard"; // Template untuk menampilkan semua task
     // }
     // Route untuk halaman timeline
-    @GetMapping("/timeline")
+    @GetMapping
     public String showTimeline(@RequestParam(name = "showCompleted", required = false, defaultValue = "false") boolean showCompleted,
                                Model model) {
         model.addAttribute("tasksByDate", taskService.getTasksGroupedByDate(showCompleted));
         model.addAttribute("showCompleted", showCompleted); // Add this to maintain state in view
         return "timeline";
-    }
-
-    @GetMapping
-    public String listAllTasks(Model model) {
-        // Mengambil task terurut berdasarkan deadline
-        model.addAttribute("tasks", taskService.getAllTasksSortedByDeadline());
-        return "dashboard"; // Template untuk menampilkan task dalam urutan timeline
     }
 
     

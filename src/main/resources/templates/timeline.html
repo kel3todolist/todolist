@@ -79,16 +79,16 @@
 </nav>
 
 <section class="home">
-  <div class="text">Timeline</div>
+  <div class="text">Dashboard</div>
   <div class="container">
     <div class="actions">
       <div class="view-options">
-        <a th:href="@{/timeline(showCompleted=false)}"
+        <a th:href="@{/(showCompleted=false)}"
            class="btn"
            th:classappend="${!showCompleted ? 'btn-active' : ''}">
           Active Tasks
         </a>
-        <a th:href="@{/timeline(showCompleted=true)}"
+        <a th:href="@{/(showCompleted=true)}"
            class="btn"
            th:classappend="${showCompleted ? 'btn-active' : ''}">
           All Tasks
