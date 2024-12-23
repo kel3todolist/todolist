@@ -751,20 +751,23 @@ body .statistic{
     width: 100%; /* Memastikan elemen mengambil seluruh lebar */
     max-width: none; /* Menghapus batas lebar */
     text-align: left; /* Ubah teks elemen menjadi rata kiri */
-    transform: translateX(-130px);
+    margin-left: 0;
+    box-sizing: border-box;
 }
 
 .statistics-section {
     display: flex;
-    flex-direction: space-between; /* Sejajarkan elemen secara horizontal */
-    justify-content: center;
+    flex-direction: row; /* Sejajarkan elemen secara horizontal */
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
     border: 1px solid #ccc; /* Border untuk card */
     border-radius: 20px; /* Membuat sudut border melengkung */
+    width: 80%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan efek bayangan */
     background-color: var(--primary-color-light);
-}
+    margin-left: -260px;
+}   
 
 h1 {
     font-size: 24px;
@@ -773,9 +776,11 @@ h1 {
 }
 
 .filter-container {
-    margin-bottom: 20px;
-    transform: translateX(-524px);
-    color: var(--text-color);
+    position: relative;
+    align-self: flex-start;
+    max-width: 600px;
+    width: 100%;
+    padding: 8px 20px;
 }
 
 .filter-container select {
