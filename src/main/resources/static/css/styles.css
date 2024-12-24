@@ -768,9 +768,12 @@ body .statistic{
     background-color: var(--primary-color-light);
     margin-left: -260px;
 }   
+.workspace .filter-container label{
+    color: var(--text-color);
+}
 
 h1 {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 20px;
     color: #2c3e50;
 }
@@ -845,26 +848,59 @@ canvas#statChart {
 }
 /* ===================================== NOTIFICATION  =========================================== */
 .notification-box{
-    border: 1px solid #fff;
-    background-color: #fff;
-    margin: 5px;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    margin-top: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 0px;
-    width: 1150px;
+    width: 75%;
     display: flex;
-    margin-left: 20px;
-    padding: 10px;
+    padding: 15px;
+    position: relative;
 }
-.notification-box:hover{
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border: 1px solid #DEE2E6;
-}
+
 .notification-icon{
     margin-left: 10px;
     margin-top: 10px;
     margin-right: 15px;
 }
+.mark-all-read{
+    height: 40px;
+    width: 18%;
+    color: var(--primary-color-light);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #FF7D0A;
+    border-radius: 10px;
+}
+
+.notification-actions button:hover {
+    background: var(--primary-color);
+}
+
+.mark-read-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.mark-read {
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border: 1px solid var(--text-color); /* Tambahkan border */
+    border-radius: 3px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+/*===================================================================================*/
 
 /* Warna untuk kategori */
 .task-box.low {
@@ -884,3 +920,4 @@ canvas#statChart {
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+

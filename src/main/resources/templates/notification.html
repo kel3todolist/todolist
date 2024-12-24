@@ -83,8 +83,9 @@
 
     <section class="home">
         <div class="text">Notifications</div>
-        <div class="konten">
-            <!-- Tombol Mark all as read -->
+        <div class="container">
+
+            <!-- Tombol Mark All as Read -->
             <div class="notification-actions"
                  th:if="${not #lists.isEmpty(notifications) and notifications.?[!read].size() > 0}">
                 <form th:action="@{/notification/mark-all-read}" method="post">
@@ -92,14 +93,14 @@
                 </form>
             </div>
 
-            <!-- Daftar notifikasi -->
-            <div th:if="${#lists.isEmpty(notifications) or notifications.?[!read].size() == 0}"
-                 class="no-notifications">
+            <!-- Pesan jika tidak ada notifikasi -->
+            <div class="no-notifications"
+                 th:if="${#lists.isEmpty(notifications) or notifications.?[!read].size() == 0}">
                 <p>No notifications</p>
             </div>
 
-            <div th:each="notification : ${notifications}"
-                 class="notification-box"
+            <!-- Daftar notifikasi -->
+            <div th:each="notification : ${notifications}" class="notification-box"
                  th:classappend="${notification.read ? 'read' : 'unread'}"
                  th:if="${!notification.read}">
                 <div class="notification-icon">
@@ -109,12 +110,10 @@
                     <div class="notification-title">
                         <h4 th:text="${notification.task.title}">Task Title</h4>
                         <span class="notification-time"
-                              th:text="${#temporals.format(notification.createdAt, 'dd MMM yyyy')}">
-                Time
-            </span>
+                              th:text="${#temporals.format(notification.createdAt, 'dd MMM yyyy')}">Time</span>
                     </div>
                     <div class="notification-desc">
-                        <p th:text="${notification.message}">description</p>
+                        <p th:text="${notification.message}">Description</p>
                     </div>
                 </div>
                 <form th:action="@{/notification/mark-read/{id}(id=${notification.id})}"
@@ -124,8 +123,6 @@
             </div>
         </div>
     </section>
-
     <script src="/js/script.js"></script>
 </body>
-
 </html>
