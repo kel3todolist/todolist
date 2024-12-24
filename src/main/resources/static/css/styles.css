@@ -763,7 +763,7 @@ body .statistic{
     padding: 20px;
     border: 1px solid #ccc; /* Border untuk card */
     border-radius: 20px; /* Membuat sudut border melengkung */
-    width: 80%;
+    width: 60%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan efek bayangan */
     background-color: var(--primary-color-light);
     margin-left: -260px;
