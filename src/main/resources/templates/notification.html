@@ -1,128 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" context="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" context="width=device-width, initial-scale=1.0">
+        <!---- ========== CSS ========== -->
+        <link rel="stylesheet" href="/css/styles.css" />
 
-    <!---- ========== CSS ========== -->
-    <link rel="stylesheet" href="/css/styles.css">
+        <!---- ========== ICON ========== -->
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet" />
 
-    <!---- ========== ICON ========== -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <title>ToDoList</title>
+    </head>
 
-    <title>ToDoList</title>
-</head>
+    <body>
+        <nav class="sidebar">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="/assets/logo.png" alt="logo" />
+                    </span>
 
-<body>
-    <nav class="sidebar">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="/assets/logo.png" alt="logo">
-                </span>
-
-                <div class="text header-text">
-                    <span class="name">ToDoList</span>
-                </div>
-
-            </div>
-        </header>
-
-        <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="/">
-                            <i class='bx bx-home-alt icon'></i>
-                            <span class="text nav-text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="/createtask">
-                            <i class='bx bx-task icon'></i>
-                            <span class="text nav-text">Create Task</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="/category">
-                            <i class='bx bx-category-alt icon'></i>
-                            <span class="text nav-text">Category</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="/statistic">
-                            <i class='bx bx-stats icon'></i>
-                            <span class="text nav-text">Statistics</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-notification icon'></i>
-                            <span class="text nav-text">Notifications</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="mode">
-                    <div class="moon-sun">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark Mode</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-            </div>
-        </div>
-    </nav>
-
-    <section class="home">
-        <div class="text">Notifications</div>
-        <div class="container">
-
-            <!-- Tombol Mark All as Read -->
-            <div class="notification-actions"
-                 th:if="${not #lists.isEmpty(notifications) and notifications.?[!read].size() > 0}">
-                <form th:action="@{/notification/mark-all-read}" method="post">
-                    <button type="submit" class="mark-all-read">Mark All as Read</button>
-                </form>
-            </div>
-
-            <!-- Pesan jika tidak ada notifikasi -->
-            <div class="no-notifications"
-                 th:if="${#lists.isEmpty(notifications) or notifications.?[!read].size() == 0}">
-                <p>No notifications</p>
-            </div>
-
-            <!-- Daftar notifikasi -->
-            <div th:each="notification : ${notifications}" class="notification-box"
-                 th:classappend="${notification.read ? 'read' : 'unread'}"
-                 th:if="${!notification.read}">
-                <div class="notification-icon">
-                    <i class='bx bx-bell bx-sm'></i>
-                </div>
-                <div class="notification-content">
-                    <div class="notification-title">
-                        <h4 th:text="${notification.task.title}">Task Title</h4>
-                        <span class="notification-time"
-                              th:text="${#temporals.format(notification.createdAt, 'dd MMM yyyy')}">Time</span>
-                    </div>
-                    <div class="notification-desc">
-                        <p th:text="${notification.message}">Description</p>
+                    <div class="text header-text">
+                        <span class="name">ToDoList</span>
                     </div>
                 </div>
-                <form th:action="@{/notification/mark-read/{id}(id=${notification.id})}"
-                      method="post" class="mark-read-form">
-                    <button type="submit" class="mark-read">Mark as Read</button>
-                </form>
+            </header>
+
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="/">
+                                <i class="bx bx-home-alt icon"></i>
+                                <span class="text nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="/createtask">
+                                <i class="bx bx-task icon"></i>
+                                <span class="text nav-text">Create Task</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="/category">
+                                <i class="bx bx-category-alt icon"></i>
+                                <span class="text nav-text">Category</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="/statistic">
+                                <i class="bx bx-stats icon"></i>
+                                <span class="text nav-text">Statistics</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class="bx bx-notification icon"></i>
+                                <span class="text nav-text">Notifications</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bottom-content">
+                    <li class="mode">
+                        <div class="moon-sun">
+                            <i class="bx bx-moon icon moon"></i>
+                            <i class="bx bx-sun icon sun"></i>
+                        </div>
+                        <span class="mode-text text">Dark Mode</span>
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                </div>
             </div>
-        </div>
-    </section>
-    <script src="/js/script.js"></script>
-</body>
+        </nav>
+
+        <section class="home">
+            <div class="text">Notifications</div>
+            <div class="notification-container">
+                <div class="notification-header">
+                    <h3>Unreaded Notifications : <span
+                            th:text="${unreadCount}"></span></h3>
+                    <!-- Tombol Mark all as read -->
+                    <div
+                        class="notification-actions"
+                        th:if="${not #lists.isEmpty(notifications) and notifications.?[!read].size() > 0}">
+                        <form th:action="@{/notification/mark-all-read}"
+                            method="post">
+                            <button type="submit" class="mark-all-read">
+                                <span>Mark All as Read</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Daftar notifikasi -->
+                <div
+                    th:if="${#lists.isEmpty(notifications) or notifications.?[!read].size() == 0}"
+                    class="no-notifications">
+                    <p>No notifications</p>
+                </div>
+
+                <div
+                    th:each="notification : ${notifications}"
+                    class="notification-box"
+                    th:classappend="${notification.read ? 'read' : 'unread'}"
+                    th:if="${!notification.read}">
+                    <div
+                        style="display: flex;flex-direction: row;align-items: start;">
+                        <div class="notification-icon">
+                            <i class="bx bx-bell bx-sm"></i>
+                        </div>
+                        <div class="notification-content">
+                            <div class="notification-title">
+                                <h4 th:text="${notification.task.title}">Task
+                                    Title</h4>
+                                <span
+                                    class="notification-time"
+                                    th:text="${#temporals.format(notification.createdAt, 'dd MMM yyyy')}">
+                                    Time
+                                </span>
+                            </div>
+                            <div class="notification-desc">
+                                <p
+                                    th:text="${notification.message}">description</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form
+                        th:action="@{/notification/mark-read/{id}(id=${notification.id})}"
+                        method="post"
+                        class="mark-read-form">
+                        <button type="submit" class="mark-read">Mark as
+                            Read</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <script src="/js/script.js"></script>
+    </body>
 </html>

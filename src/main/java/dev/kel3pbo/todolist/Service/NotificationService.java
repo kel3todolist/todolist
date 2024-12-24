@@ -69,4 +69,8 @@ public class NotificationService {
         unreadNotifications.forEach(notification -> notification.setRead(true));
         notificationRepository.saveAll(unreadNotifications);
     }
+
+    public int getUnreadCount() {
+        return getUnreadNotifications().size();
+    }
 }

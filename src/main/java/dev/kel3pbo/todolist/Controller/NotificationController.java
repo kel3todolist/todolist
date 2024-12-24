@@ -19,6 +19,7 @@ public class NotificationController {
     @GetMapping
     public String showNotifications(Model model) {
         model.addAttribute("notifications", notificationService.getAllNotifications());
+        model.addAttribute("unreadCount", notificationService.getUnreadCount());
         return "notification";
     }
 
