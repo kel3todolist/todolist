@@ -21,7 +21,6 @@ jobs:
         with:
           java-version: '21'
           distribution: 'microsoft'
-          java-package: 'jdk'
 
       - name: Build with Maven
         run: mvn clean install
@@ -50,9 +49,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_83FE1F6EA5284044BBF817FD1E4620FA }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_921C00B89CE74417BD910E7E30324431 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C6FB7F91A27B446D9F26FD7CBA28E561 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DF0EAA706E4B45BBB47F94139659A3C7 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_377E18495958442497CBB6171108D4F9 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_32BED112993844F19B381F3AFF862EA8 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
