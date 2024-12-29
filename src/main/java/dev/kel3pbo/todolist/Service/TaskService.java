@@ -45,7 +45,6 @@ public class TaskService {
             task.setDescription(updatedTask.getDescription());
             task.setPriority(updatedTask.getPriority());
             task.setDeadline(updatedTask.getDeadline());
-            task.updateStatus(updatedTask.getStatus().getName());
             taskRepository.save(task);
         } else {
             throw new RuntimeException("Task dengan ID " + id + " tidak ditemukan.");

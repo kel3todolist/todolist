@@ -818,8 +818,6 @@ h1 {
     background-color: var(--primary-color-light);
 }
 .date-range {
-    color: #666;
-    font-size: 0.9em;
     margin-top: -10px;
     margin-bottom: 15px;
     font-style: italic;
@@ -836,7 +834,7 @@ h1 {
     height: 400px;
     margin: 20px auto;
     text-align: center;
-    padding: 20px;
+    padding: 5px;
 }
 .chart-container #statChart {
     color: var(--text-color);
@@ -877,13 +875,14 @@ canvas#statChart {
   
   .notification-box {
     border: 1px solid #fff;
-    background-color: #fff;
+    background-color: var(--primary-color-light);
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    color: var(--text-color);
   }
   .notification-box:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -906,12 +905,13 @@ canvas#statChart {
   }
   
   .mark-all-read:hover {
-    color: rgb(42, 42, 240);
+      color: var(--primary-color);
   }
   
   .mark-read {
     background: none;
     border: none;
+    color: var(--text-color);
     cursor: pointer;
     font-size: 1rem;
     text-decoration: none;
@@ -919,7 +919,7 @@ canvas#statChart {
   }
   
   .mark-read:hover {
-    color: blue;
+      color: var(--primary-color);
   }
 
 /*===================================================================================*/
