@@ -14,7 +14,7 @@ public class Notification {
     private LocalDateTime createdAt;
     private boolean isRead;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "task_id")
     private Task task;
 

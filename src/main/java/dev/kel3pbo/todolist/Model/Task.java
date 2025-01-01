@@ -23,12 +23,16 @@ public class Task implements Notifiable {
     private String description;
     private String priority;
     private LocalDate deadline;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     private Status status;
 
+    @OneToOne(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Notification notification;
+
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = true) // nullable jika task bisa tanpa kategori
+    @JoinColumn(name = "category_id", nullable = true)
     private Category category;
     public Task( String title, String description, String priority, LocalDate deadline) {
         this.title = title;
@@ -96,7 +100,13 @@ public class Task implements Notifiable {
     public String sendNotification() {
         return "Task " + title + " is near deadline!" + " (" + deadline + ")";
     }
+    public Notification getNotification() {
+        return notification;
+    }
 
+    public void setNotification(Notification notification) {
+        this.notification = notification;
+    }
     public Category getCategory() {
         return category;
     }
