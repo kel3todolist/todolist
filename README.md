@@ -13,3 +13,30 @@ This TodoList web application addresses these challenges by providing a comprehe
 
 <b>Hosting:</b> The entire application is deployed and hosted using Microsoft Azure, leveraging cloud computing benefits including high availability, automatic scaling, and global accessibility.
 
+<h2>✨ Main Features</h2>
+
+1. <b>Task Management</b>
+  This feature allows users to easily add, edit, delete, and organize their task lists. With an intuitive interface, users can efficiently manage various daily tasks.
+
+2. <b>Task Priority</b>
+  Users can assign priority levels to each task, such as "High," "Medium," or "Low," to ensure focus on more urgent and important tasks.
+
+3. <b>Tas Status</b>
+  Tasks can be tracked based on their status: "Not Started," "On Progress," or "Completed," allowing users to monitor work progress more clearly.
+
+4. <b>Deadline Reminders</b>
+  The system automatically sends notifications to users to remind them of tasks approaching their completion deadlines, helping users avoid missing important due dates.
+
+5. <b>Task Categories</b>
+  This feature enables users to group tasks into various categories such as academic, organizational, personal, or others, making task management more organized.
+
+6. <b>Performance Statistics</b>
+  Users can view statistics displaying the number of completed, ongoing, and not-started tasks, providing a clear overview of their productivity.
+
+7. <b>Timeline Visualization</b>
+  This feature presents task schedules in a structured timeline format, allowing users to visualize their work plans chronologically.
+
+8. <b> Dark Mode</b>
+  Users can activate dark mode to change the application's appearance to darker colors, providing visual comfort when used in low-light environments.
+
+<h2>📸 Screenshots</h2>
