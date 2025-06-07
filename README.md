@@ -40,3 +40,15 @@ This TodoList web application addresses these challenges by providing a comprehe
   Users can activate dark mode to change the application's appearance to darker colors, providing visual comfort when used in low-light environments.
 
 <h2>📸 Screenshots</h2>
+
+![Screenshot 1](image/ss1.png)
+
+![Screenshot 2](image/ss6.png)
+
+![Screenshot 3](image/ss2.png)
+
+![Screenshot 4](image/ss3.png)
+
+![Screenshot 5](image/ss4.png)
+
+![Screenshot 6](image/ss5.png)
